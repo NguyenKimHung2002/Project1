@@ -28,28 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPermission = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblPer = new System.Windows.Forms.Label();
+            this.lblTimeCur = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.btnBanSanPham = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
             this.panelSide = new System.Windows.Forms.Panel();
-            this.btnTrangChu = new System.Windows.Forms.Button();
+            this.btnCustommer = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panelControls = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblTitlePer = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -113,79 +115,45 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblPermission);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblName);
+            this.panel1.Controls.Add(this.lblTitlePer);
+            this.panel1.Controls.Add(this.lblPer);
+            this.panel1.Controls.Add(this.lblTimeCur);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(180, 40);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 80);
             this.panel1.TabIndex = 3;
             // 
-            // lblPermission
+            // lblPer
             // 
-            this.lblPermission.AutoSize = true;
-            this.lblPermission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPermission.ForeColor = System.Drawing.Color.White;
-            this.lblPermission.Location = new System.Drawing.Point(121, 50);
-            this.lblPermission.Name = "lblPermission";
-            this.lblPermission.Size = new System.Drawing.Size(96, 20);
-            this.lblPermission.TabIndex = 2;
-            this.lblPermission.Text = "Permission";
+            this.lblPer.AutoSize = true;
+            this.lblPer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPer.ForeColor = System.Drawing.Color.White;
+            this.lblPer.Location = new System.Drawing.Point(142, 47);
+            this.lblPer.Name = "lblPer";
+            this.lblPer.Size = new System.Drawing.Size(96, 20);
+            this.lblPer.TabIndex = 0;
+            this.lblPer.Text = "Permission";
             // 
-            // label1
+            // lblTimeCur
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(121, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Permission";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(43, 50);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Quyền:";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(709, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "HH:MM:SS";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(120, 19);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(67, 20);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Họ Tên";
+            this.lblTimeCur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTimeCur.AutoSize = true;
+            this.lblTimeCur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeCur.ForeColor = System.Drawing.Color.White;
+            this.lblTimeCur.Location = new System.Drawing.Point(578, 34);
+            this.lblTimeCur.Name = "lblTimeCur";
+            this.lblTimeCur.Size = new System.Drawing.Size(191, 20);
+            this.lblTimeCur.TabIndex = 0;
+            this.lblTimeCur.Text = "00:00:00 tt dd/MM/yyyy";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(24, 19);
+            this.label8.Location = new System.Drawing.Point(37, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 20);
             this.label8.TabIndex = 0;
@@ -195,16 +163,36 @@
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
             this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelLeft.Controls.Add(this.button3);
             this.panelLeft.Controls.Add(this.button5);
-            this.panelLeft.Controls.Add(this.btnBanSanPham);
+            this.panelLeft.Controls.Add(this.btnPayment);
             this.panelLeft.Controls.Add(this.panelSide);
-            this.panelLeft.Controls.Add(this.btnTrangChu);
+            this.panelLeft.Controls.Add(this.btnCustommer);
             this.panelLeft.Controls.Add(this.panel3);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(180, 600);
             this.panelLeft.TabIndex = 4;
+            // 
+            // button3
+            // 
+            this.button3.AccessibleName = "banhang";
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(10, 300);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(170, 60);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "    Thống kê";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -221,28 +209,29 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(170, 60);
             this.button5.TabIndex = 6;
-            this.button5.Text = "      Thống kê";
+            this.button5.Text = "    Data";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // btnBanSanPham
+            // btnPayment
             // 
-            this.btnBanSanPham.AccessibleName = "banhang";
-            this.btnBanSanPham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
-            this.btnBanSanPham.FlatAppearance.BorderSize = 0;
-            this.btnBanSanPham.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnBanSanPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBanSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBanSanPham.ForeColor = System.Drawing.Color.White;
-            this.btnBanSanPham.Image = ((System.Drawing.Image)(resources.GetObject("btnBanSanPham.Image")));
-            this.btnBanSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBanSanPham.Location = new System.Drawing.Point(10, 180);
-            this.btnBanSanPham.Name = "btnBanSanPham";
-            this.btnBanSanPham.Size = new System.Drawing.Size(170, 60);
-            this.btnBanSanPham.TabIndex = 5;
-            this.btnBanSanPham.Text = "      Data";
-            this.btnBanSanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBanSanPham.UseVisualStyleBackColor = false;
+            this.btnPayment.AccessibleName = "banhang";
+            this.btnPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayment.Location = new System.Drawing.Point(10, 180);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(170, 60);
+            this.btnPayment.TabIndex = 5;
+            this.btnPayment.Text = "    Thanh toán";
+            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // panelSide
             // 
@@ -252,25 +241,25 @@
             this.panelSide.Size = new System.Drawing.Size(10, 60);
             this.panelSide.TabIndex = 4;
             // 
-            // btnTrangChu
+            // btnCustommer
             // 
-            this.btnTrangChu.AccessibleName = "trangchu";
-            this.btnTrangChu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
-            this.btnTrangChu.FlatAppearance.BorderSize = 0;
-            this.btnTrangChu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnTrangChu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrangChu.ForeColor = System.Drawing.Color.White;
-            this.btnTrangChu.Image = ((System.Drawing.Image)(resources.GetObject("btnTrangChu.Image")));
-            this.btnTrangChu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTrangChu.Location = new System.Drawing.Point(10, 120);
-            this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Size = new System.Drawing.Size(170, 60);
-            this.btnTrangChu.TabIndex = 3;
-            this.btnTrangChu.Text = "    Form";
-            this.btnTrangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTrangChu.UseVisualStyleBackColor = false;
-            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
+            this.btnCustommer.AccessibleName = "trangchu";
+            this.btnCustommer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnCustommer.FlatAppearance.BorderSize = 0;
+            this.btnCustommer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnCustommer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustommer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustommer.ForeColor = System.Drawing.Color.White;
+            this.btnCustommer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustommer.Image")));
+            this.btnCustommer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCustommer.Location = new System.Drawing.Point(10, 120);
+            this.btnCustommer.Name = "btnCustommer";
+            this.btnCustommer.Size = new System.Drawing.Size(170, 60);
+            this.btnCustommer.TabIndex = 3;
+            this.btnCustommer.Text = "   Khách hàng";
+            this.btnCustommer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCustommer.UseVisualStyleBackColor = false;
+            this.btnCustommer.Click += new System.EventHandler(this.btnCustommer_Click);
             // 
             // panel3
             // 
@@ -323,8 +312,34 @@
             // 
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(820, 232);
+            this.panelMain.Size = new System.Drawing.Size(820, 480);
             this.panelMain.TabIndex = 4;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(142, 16);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(62, 20);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "HoTen";
+            // 
+            // lblTitlePer
+            // 
+            this.lblTitlePer.AutoSize = true;
+            this.lblTitlePer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePer.ForeColor = System.Drawing.Color.White;
+            this.lblTitlePer.Location = new System.Drawing.Point(37, 47);
+            this.lblTitlePer.Name = "lblTitlePer";
+            this.lblTitlePer.Size = new System.Drawing.Size(65, 20);
+            this.lblTitlePer.TabIndex = 2;
+            this.lblTitlePer.Text = "Quyền:";
             // 
             // FormMain
             // 
@@ -339,6 +354,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -359,21 +375,22 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPer;
+        private System.Windows.Forms.Label lblTimeCur;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panelLeft;
-        private System.Windows.Forms.Button btnBanSanPham;
+        private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Panel panelSide;
-        private System.Windows.Forms.Button btnTrangChu;
+        private System.Windows.Forms.Button btnCustommer;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelControls;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Label lblPermission;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblTitlePer;
     }
 }

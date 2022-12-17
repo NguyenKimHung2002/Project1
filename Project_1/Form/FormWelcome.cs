@@ -19,8 +19,10 @@ namespace Project_1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.AppStarting;
             FormLogIn formLogIn = new FormLogIn();
             formLogIn.ShowDialog();
+            Cursor = Cursors.Default;
         }
     }
 }

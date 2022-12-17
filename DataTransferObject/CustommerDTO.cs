@@ -23,5 +23,6 @@ namespace DataTransferObject
 
         public string CustommerName { get => _CustommerName; set => _CustommerName = value; }
         public string CustommerPhone { get => _CustommerPhone; set => _CustommerPhone=value; }
+        public int CustommerNo { get; set; }
     }
 }

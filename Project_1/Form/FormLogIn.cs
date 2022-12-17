@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataTransferObject;
 using BusinessLogicLayer;
+using System.Security;
 
 namespace Project_1
 {
@@ -16,25 +17,34 @@ namespace Project_1
     {
         public FormLogIn()
         {
-            InitializeComponent();
+            InitializeComponent();           
+        }
+        private void FormLogIn_Shown(object sender, EventArgs e)
+        {
+            txtAccount.Focus();
         }
         StaffBLL staffBLL = new StaffBLL();
+        public static string NameLogIn = "";
+        public static int StaffNoLogIn = 0;
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.AppStarting;
             StaffDTO staffDTO = new StaffDTO();
             staffDTO.StaffAccount = txtAccount.Text;
             staffDTO.StaffPassword = txtPassword.Text;
             int code = staffBLL.CheckLoginBLL(staffDTO);
             if (code == 0)
             {
-                MessageBox.Show("Chào mừng Admin đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                NameLogIn = staffBLL.GetStaffNameBLL(staffDTO);
+                StaffNoLogIn = staffBLL.GetStaffNoBLL(staffDTO);
+                //MessageBox.Show("Chào mừng Admin đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormMain formMain = new FormMain();
                 this.Close();
                 formMain.ShowDialog();
             }
             else if (code == 1)
             {
-                MessageBox.Show("Chào mừng Manager đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Chào mừng Manager đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (code == 2)
             {
@@ -49,12 +59,37 @@ namespace Project_1
                 txtAccount.Text = "";
                 txtPassword.Text = "";
                 txtAccount.Focus();
-            }            
+            }
+            Cursor = Cursors.Default;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnShowPass_Click(object sender, EventArgs e)
+        {
+            if (btnShowPass.ImageIndex == 0)
+            {
+                btnShowPass.ImageIndex = 1;
+                txtPassword.PasswordChar = '\0';
+                txtPassword.Focus();
+            }
+            else
+            {
+                btnShowPass.ImageIndex = 0;
+                txtPassword.PasswordChar = '●';
+                txtPassword.Focus();
+            }
+        }
+
+        private void btnShowPass_MouseHover(object sender, EventArgs e)
+        {
+            if (btnShowPass.ImageIndex == 0)
+                toolTip1.Show("Hiện mật khẩu", btnShowPass);
+            else
+                toolTip1.Show("Ẩn mật khẩu", btnShowPass);
         }
     }
 }

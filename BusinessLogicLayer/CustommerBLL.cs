@@ -20,5 +20,21 @@ namespace BusinessLogicLayer
         {
             return custommerDAL.AddCustommerDAL(custommerDTO);
         }
+        public bool UpdateCustommerBLL(CustommerDTO custommerDTO)
+        {
+            return custommerDAL.UpdateCustommerDAL(custommerDTO);
+        }
+        public bool DeleteCustommerBLL(CustommerDTO custommerDTO)
+        {
+            return custommerDAL.DeleteCustommerDAL(custommerDTO);
+        }
+        public DataTable GetCustommerName(CustommerDTO custommerDTO)
+        {
+            return custommerDAL.GetCustommerNameDAL(custommerDTO);
+        }
+        public int GetCustommerNoBLL(CustommerDTO custommerDTO)
+        {
+            return custommerDAL.GetCustommerNoDAL(custommerDTO);
+        }
     }
 }

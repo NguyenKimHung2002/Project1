@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogIn));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -42,6 +43,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtAccount = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -103,12 +106,16 @@
             this.btnShowPass.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.btnShowPass.FlatAppearance.BorderSize = 0;
             this.btnShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.btnShowPass.ImageIndex = 0;
-            this.btnShowPass.Location = new System.Drawing.Point(532, 360);
+            this.btnShowPass.ImageList = this.imageList1;
+            this.btnShowPass.Location = new System.Drawing.Point(514, 360);
             this.btnShowPass.Name = "btnShowPass";
-            this.btnShowPass.Size = new System.Drawing.Size(27, 25);
+            this.btnShowPass.Size = new System.Drawing.Size(44, 31);
             this.btnShowPass.TabIndex = 18;
             this.btnShowPass.UseVisualStyleBackColor = false;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            this.btnShowPass.MouseHover += new System.EventHandler(this.btnShowPass_MouseHover);
             // 
             // lbDangNhap
             // 
@@ -191,11 +198,18 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
             this.txtPassword.Location = new System.Drawing.Point(118, 366);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(408, 25);
+            this.txtPassword.MinimumSize = new System.Drawing.Size(390, 20);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(408, 19);
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(399, 20);
             this.txtPassword.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "EyeHide.PNG");
+            this.imageList1.Images.SetKeyName(1, "Eye.PNG");
             // 
             // FormLogIn
             // 
@@ -217,6 +231,7 @@
             this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.Shown += new System.EventHandler(this.FormLogIn_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -241,5 +256,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

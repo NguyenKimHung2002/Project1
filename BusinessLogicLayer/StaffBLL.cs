@@ -14,5 +14,13 @@ namespace BusinessLogicLayer
         {
             return staffDAL.CheckLoginDAL(staffDTO);
         }
+        public string GetStaffNameBLL(StaffDTO staffDTO)
+        {
+            return staffDAL.GetStaffNameDAL(staffDTO);
+        }
+        public int GetStaffNoBLL(StaffDTO staffDTO)
+        {
+            return staffDAL.GetStaffNoDAL(staffDTO);
+        }
     }
 }

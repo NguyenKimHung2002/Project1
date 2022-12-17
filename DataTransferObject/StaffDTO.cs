@@ -41,5 +41,6 @@ namespace DataTransferObject
         public string StaffAccount { get => _StaffAccount; set => _StaffAccount = value; }
         public string StaffPassword { get => _StaffPassword; set => _StaffPassword = value; }
         public int StaffIDPer { get => _StaffIDPer; set => _StaffIDPer=value; }
+        public int StaffNo { get; set; }
     }
 }
