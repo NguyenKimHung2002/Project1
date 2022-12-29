@@ -35,12 +35,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblTitlePer = new System.Windows.Forms.Label();
             this.lblPer = new System.Windows.Forms.Label();
             this.lblTimeCur = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnCategory = new System.Windows.Forms.Button();
+            this.btnFeature = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.panelSide = new System.Windows.Forms.Panel();
             this.btnCustommer = new System.Windows.Forms.Button();
@@ -50,8 +53,6 @@
             this.panelControls = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblTitlePer = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -125,6 +126,28 @@
             this.panel1.Size = new System.Drawing.Size(820, 80);
             this.panel1.TabIndex = 3;
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(142, 16);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(62, 20);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "HoTen";
+            // 
+            // lblTitlePer
+            // 
+            this.lblTitlePer.AutoSize = true;
+            this.lblTitlePer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePer.ForeColor = System.Drawing.Color.White;
+            this.lblTitlePer.Location = new System.Drawing.Point(37, 47);
+            this.lblTitlePer.Name = "lblTitlePer";
+            this.lblTitlePer.Size = new System.Drawing.Size(65, 20);
+            this.lblTitlePer.TabIndex = 2;
+            this.lblTitlePer.Text = "Quyền:";
+            // 
             // lblPer
             // 
             this.lblPer.AutoSize = true;
@@ -163,8 +186,9 @@
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
             this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelLeft.Controls.Add(this.button3);
-            this.panelLeft.Controls.Add(this.button5);
+            this.panelLeft.Controls.Add(this.btnCategory);
+            this.panelLeft.Controls.Add(this.btnFeature);
+            this.panelLeft.Controls.Add(this.btnProduct);
             this.panelLeft.Controls.Add(this.btnPayment);
             this.panelLeft.Controls.Add(this.panelSide);
             this.panelLeft.Controls.Add(this.btnCustommer);
@@ -175,43 +199,65 @@
             this.panelLeft.Size = new System.Drawing.Size(180, 600);
             this.panelLeft.TabIndex = 4;
             // 
-            // button3
+            // btnCategory
             // 
-            this.button3.AccessibleName = "banhang";
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(10, 300);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 60);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "    Thống kê";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCategory.AccessibleName = "banhang";
+            this.btnCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnCategory.FlatAppearance.BorderSize = 0;
+            this.btnCategory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.ForeColor = System.Drawing.Color.White;
+            this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
+            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.Location = new System.Drawing.Point(10, 360);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(170, 60);
+            this.btnCategory.TabIndex = 9;
+            this.btnCategory.Text = "  Danh mục";
+            this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCategory.UseVisualStyleBackColor = false;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
-            // button5
+            // btnFeature
             // 
-            this.button5.AccessibleName = "banhang";
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(10, 240);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 60);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "    Data";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnFeature.AccessibleName = "banhang";
+            this.btnFeature.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnFeature.FlatAppearance.BorderSize = 0;
+            this.btnFeature.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnFeature.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFeature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeature.ForeColor = System.Drawing.Color.White;
+            this.btnFeature.Image = ((System.Drawing.Image)(resources.GetObject("btnFeature.Image")));
+            this.btnFeature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFeature.Location = new System.Drawing.Point(10, 300);
+            this.btnFeature.Name = "btnFeature";
+            this.btnFeature.Size = new System.Drawing.Size(170, 60);
+            this.btnFeature.TabIndex = 7;
+            this.btnFeature.Text = "    Đặc tính";
+            this.btnFeature.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFeature.UseVisualStyleBackColor = false;
+            this.btnFeature.Click += new System.EventHandler(this.btnFeature_Click);
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.AccessibleName = "banhang";
+            this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnProduct.FlatAppearance.BorderSize = 0;
+            this.btnProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProduct.ForeColor = System.Drawing.Color.White;
+            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
+            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduct.Location = new System.Drawing.Point(10, 240);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(170, 60);
+            this.btnProduct.TabIndex = 6;
+            this.btnProduct.Text = "    Sản phẩm";
+            this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProduct.UseVisualStyleBackColor = false;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnPayment
             // 
@@ -319,28 +365,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(142, 16);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(62, 20);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "HoTen";
-            // 
-            // lblTitlePer
-            // 
-            this.lblTitlePer.AutoSize = true;
-            this.lblTitlePer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitlePer.ForeColor = System.Drawing.Color.White;
-            this.lblTitlePer.Location = new System.Drawing.Point(37, 47);
-            this.lblTitlePer.Name = "lblTitlePer";
-            this.lblTitlePer.Size = new System.Drawing.Size(65, 20);
-            this.lblTitlePer.TabIndex = 2;
-            this.lblTitlePer.Text = "Quyền:";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,11 +410,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelControls;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnFeature;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblTitlePer;
+        private System.Windows.Forms.Button btnCategory;
     }
 }

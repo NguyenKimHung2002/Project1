@@ -15,7 +15,7 @@ namespace Project_1
     public partial class UserControlPayment : UserControl
     {
         StaffBLL staffBLL = new StaffBLL();
-        CustommerBLL custommerBLL = new CustommerBLL();
+        CustomerBLL customerBLL = new CustomerBLL();
         ProductBLL productBLL = new ProductBLL();
         CategoryBLL categoryBLL = new CategoryBLL();
         FeatureBLL featureBLL = new FeatureBLL();
@@ -30,27 +30,27 @@ namespace Project_1
         {
             Reset();
         }
-        private void LoadFilterProductType()
+        private void LoadCategoryName()
         {
-            DataTable dt = categoryBLL.GetListProductTypeBLL();
+            DataTable dt = categoryBLL.GetCategoryNameBLL();
             DataRow dr = dt.NewRow();
             dr["Tên Loại SP"] = "Tất cả";
             dt.Rows.Add(dr);
-            cbFilterCategoryName.DataSource = dt;
-            cbFilterCategoryName.DisplayMember = "Tên Loại SP";
-            cbFilterCategoryName.SelectedIndex = cbFilterCategoryName.Items.Count - 1;
+            cbCategoryName.DataSource = dt;
+            cbCategoryName.DisplayMember = "Tên Loại SP";
+            cbCategoryName.SelectedIndex = cbCategoryName.Items.Count - 1;
         }
-        private void LoadFilterFeatureTag()
+        private void LoadFeatureName()
         {
-            DataTable dt = featureBLL.GetListFeatureTagDAL();
+            DataTable dt = featureBLL.GetFeatureNameBLL();
             DataRow dr = dt.NewRow();
             dr["Mã đặc tính"] = "-1";
-            dr["Đặc tính nổi bật"] = "Tất cả";
+            dr["Đặc tính"] = "Tất cả";
             dt.Rows.Add(dr);
-            cbFilterFeatureTag.DataSource = dt;
-            cbFilterFeatureTag.DisplayMember = "Đặc tính nổi bật";
-            cbFilterFeatureTag.ValueMember = "Mã đặc tính";
-            cbFilterFeatureTag.SelectedIndex = cbFilterFeatureTag.Items.Count - 1;
+            cbFeatureName.DataSource = dt;
+            cbFeatureName.DisplayMember = "Đặc tính nổi bật";
+            cbFeatureName.ValueMember = "Đặc tính";
+            cbFeatureName.SelectedIndex = cbFeatureName.Items.Count - 1;
         }
         private void ShowDataProduct()
         {
@@ -58,37 +58,37 @@ namespace Project_1
         }
         private void PhoneText_Enter(object sender, EventArgs e)
         {
-            if (txtCustommerPhone.Text == "Nhập vào số điện thoại")
+            if (txtCustomerPhone.Text == "Nhập vào số điện thoại")
             {
-                txtCustommerPhone.Text = "";
-                txtCustommerPhone.ForeColor = Color.Black;
+                txtCustomerPhone.Text = "";
+                txtCustomerPhone.ForeColor = Color.Black;
             }
         }
 
         private void PhoneText_Leave(object sender, EventArgs e)
         {
-            if (txtCustommerPhone.Text == "")
+            if (txtCustomerPhone.Text == "")
             {
-                txtCustommerPhone.Text = "Nhập vào số điện thoại";
-                txtCustommerPhone.ForeColor = Color.LightGray;
+                txtCustomerPhone.Text = "Nhập vào số điện thoại";
+                txtCustomerPhone.ForeColor = Color.LightGray;
             }
         }
 
         private void txtCustommerPhone_Enter(object sender, EventArgs e)
         {
-            if(txtCustommerPhone.Text == "Nhập vào số điện thoại")
+            if(txtCustomerPhone.Text == "Nhập vào số điện thoại")
             {
-                txtCustommerPhone.Text = "";
-                txtCustommerPhone.ForeColor = Color.Black;
+                txtCustomerPhone.Text = "";
+                txtCustomerPhone.ForeColor = Color.Black;
             }
         }
 
         private void txtCustommerPhone_Leave(object sender, EventArgs e)
         {
-            if(txtCustommerPhone.Text == "")
+            if(txtCustomerPhone.Text == "")
             {
-                txtCustommerPhone.Text = "Nhập vào số điện thoại";
-                txtCustommerPhone.ForeColor = Color.LightGray;
+                txtCustomerPhone.Text = "Nhập vào số điện thoại";
+                txtCustomerPhone.ForeColor = Color.LightGray;
             }
         }
         private void txtProductName_Enter(object sender, EventArgs e)
@@ -144,20 +144,20 @@ namespace Project_1
         }
         private void txtCustommerPhone_TextChanged(object sender, EventArgs e)
         {
-            CustommerDTO custommerDTO = new CustommerDTO();
-            if (txtCustommerPhone.Text != "" || txtCustommerPhone.Text != "Nhập vào số điện thoại")
+            CustomerDTO customerDTO = new CustomerDTO();
+            if (txtCustomerPhone.Text != "" || txtCustomerPhone.Text != "Nhập vào số điện thoại")
             {
-                custommerDTO.CustommerPhone = txtCustommerPhone.Text;
-                DataTable dt = custommerBLL.GetCustommerName(custommerDTO);
+                customerDTO.CustomerPhone = txtCustomerPhone.Text;
+                DataTable dt = customerBLL.GetCustomerName(customerDTO);
                 if(dt.Rows.Count != 1)
                 {
                     picSuccess.Visible =false;
-                    txtCustommerName.Text = "";
+                    txtCustomerName.Text = "";
                 }
                 else
                 {
                     picSuccess.Visible = true;
-                    txtCustommerName.Text = dt.Rows[0][0].ToString();
+                    txtCustomerName.Text = dt.Rows[0][0].ToString();
                 }
             }
             else
@@ -165,8 +165,6 @@ namespace Project_1
                 MessageBox.Show("Vui lòng nhập số điện thoại khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        
-
         private void dgvShowDataProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = new DataGridViewRow();
@@ -175,8 +173,7 @@ namespace Project_1
                 row = dgvShowDataProduct.Rows[e.RowIndex];
                 txtProductName.Text = Convert.ToString(row.Cells["ProductName"].Value);
                 txtProductNumber.Text = "1";
-                cbFilterCategoryName.Text = Convert.ToString(row.Cells["CategoryName"].Value);
-                cbFilterFeatureTag.Text = Convert.ToString(row.Cells["FeatureTag"].Value);
+                cbFeatureName.Text = Convert.ToString(row.Cells["FeatureName"].Value);
                 lblProductNo.Text = Convert.ToString(row.Cells["ProductNo"].Value);
                 txtProductName.ForeColor = Color.Black;
             }
@@ -185,20 +182,21 @@ namespace Project_1
         private void btnResetFilter_Click(object sender, EventArgs e)
         {
             Reset();
-            txtCustommerPhone.ForeColor = Color.LightGray;
+            txtCustomerPhone.ForeColor = Color.LightGray;
             txtProductName.ForeColor = Color.LightGray;
             txtProductNumber.ForeColor = Color.Gray;
             txtMonneyCustommerPay.ForeColor = Color.Gray;
         }
         private void Reset()
         {
-            LoadFilterProductType();
-            LoadFilterFeatureTag();
+            LoadCategoryName();
+            LoadFeatureName();
             ShowDataProduct();
-            txtCustommerPhone.Text = "Nhập vào số điện thoại";
+            txtCustomerPhone.Text = "Nhập vào số điện thoại";
             txtProductName.Text = "Tên sản phẩm";
             txtProductNumber.Text = "Số lượng";
             txtMonneyCustommerPay.Text = "Nhập và nhấn Enter";
+            btnPayment.BackColor = Color.Gray;
             btnCancel.BackColor = Color.Gray;
         }
 
@@ -218,18 +216,18 @@ namespace Project_1
         private void btnAddToInvoice_Click(object sender, EventArgs e)
         {
             ProductDTO productDTO = new ProductDTO();
-            productDTO.ProductNo = lblProductNo.Text;
+            productDTO.ProductId = lblProductNo.Text;
             DataTable dt = productBLL.AddInvoiceDetailBLL(productDTO);
             try
             {
                 if (txtProductNumber.Text != "1" && txtProductNumber.Text != "Số lượng")
                 {
                     int intoMoney = Convert.ToInt32(dt.Rows[0].ItemArray[1]) * Convert.ToInt32(txtProductNumber.Text);
-                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductNo, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), "-", "+");
+                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), "-", "+");
                 }
                 else
                 {
-                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductNo, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], "-", "+");
+                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], "-", "+");
                 }        
                 LoadSumInvoice();
                 sum = 0;
@@ -286,7 +284,7 @@ namespace Project_1
                 txtExcessMoneyReturned.Text = "";
                 Reset();
                 sum = 0;
-                txtCustommerPhone.ForeColor = Color.LightGray;
+                txtCustomerPhone.ForeColor = Color.LightGray;
                 txtProductName.ForeColor = Color.LightGray;
                 txtProductNumber.ForeColor = Color.Gray;
                 txtMonneyCustommerPay.ForeColor = Color.Gray;
@@ -295,8 +293,8 @@ namespace Project_1
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            CustommerDTO custommerDTO = new CustommerDTO();
-            custommerDTO.CustommerPhone = txtCustommerPhone.Text;
+            CustomerDTO customerDTO = new CustomerDTO();
+            customerDTO.CustomerPhone = txtCustomerPhone.Text;
             if(picSuccess.Visible == false)
             {
                 MessageBox.Show("Vui lòng chọn khách hàng thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -305,8 +303,8 @@ namespace Project_1
             {
                 InvoiceDTO invoiceDTO = new InvoiceDTO();
                 invoiceDTO.InvoiceDateTime = DateTime.Now;
-                invoiceDTO.CustommerNo = custommerBLL.GetCustommerNoBLL(custommerDTO);
-                invoiceDTO.StaffNo = FormLogIn.StaffNoLogIn;
+                invoiceDTO.CustomerId = customerBLL.GetCustomerIdBLL(customerDTO);
+                invoiceDTO.StaffId = FormLogIn.StaffNoLogIn;
                
                 if (invoiceBLL.CreateInvoiceBLL(invoiceDTO))
                 {
@@ -314,10 +312,10 @@ namespace Project_1
                     {
                         StaffDTO staffDTO = new StaffDTO();
                         InvoiceDetailDTO invoiceDetailDTO = new InvoiceDetailDTO();
-                        invoiceDetailDTO.InvoiceNo = invoiceBLL.GetInvoiceNoBLL(invoiceDTO);
-                        invoiceDetailDTO.ProductNo = dgvInvoiceDetail.Rows[i].Cells[0].Value.ToString();
+                        invoiceDetailDTO.InvoiceId = invoiceBLL.GetInvoiceNoBLL(invoiceDTO);
+                        invoiceDetailDTO.ProductId = dgvInvoiceDetail.Rows[i].Cells[0].Value.ToString();
                         invoiceDetailDTO.UnitPrice = Convert.ToInt32(dgvInvoiceDetail.Rows[i].Cells[2].Value.ToString());
-                        invoiceDetailDTO.ProductNumber = Convert.ToInt32(dgvInvoiceDetail.Rows[i].Cells[4].Value.ToString());
+                        invoiceDetailDTO.QuantityNo = Convert.ToInt32(dgvInvoiceDetail.Rows[i].Cells[4].Value.ToString());
                         if (invoiceDetailBLL.CreateInvoiceDetailBLL(invoiceDetailDTO) == false)
                         {
                             MessageBox.Show("Error", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);

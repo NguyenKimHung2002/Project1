@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnShowPass = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lbDangNhap = new System.Windows.Forms.Label();
             this.lbMatKhau = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.txtAccount = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -59,7 +59,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 57);
+            this.panel1.Size = new System.Drawing.Size(480, 57);
             this.panel1.TabIndex = 11;
             // 
             // button2
@@ -72,7 +72,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(523, 0);
+            this.button2.Location = new System.Drawing.Point(419, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(61, 57);
             this.button2.TabIndex = 10;
@@ -109,13 +109,20 @@
             this.btnShowPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.btnShowPass.ImageIndex = 0;
             this.btnShowPass.ImageList = this.imageList1;
-            this.btnShowPass.Location = new System.Drawing.Point(514, 360);
+            this.btnShowPass.Location = new System.Drawing.Point(407, 360);
             this.btnShowPass.Name = "btnShowPass";
             this.btnShowPass.Size = new System.Drawing.Size(44, 31);
             this.btnShowPass.TabIndex = 18;
             this.btnShowPass.UseVisualStyleBackColor = false;
             this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
             this.btnShowPass.MouseHover += new System.EventHandler(this.btnShowPass_MouseHover);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "EyeHide.PNG");
+            this.imageList1.Images.SetKeyName(1, "Eye.PNG");
             // 
             // lbDangNhap
             // 
@@ -149,7 +156,7 @@
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(31, 454);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(528, 41);
+            this.btnDangNhap.Size = new System.Drawing.Size(420, 41);
             this.btnDangNhap.TabIndex = 12;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
@@ -160,7 +167,7 @@
             this.pnlTenDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
             this.pnlTenDangNhap.Location = new System.Drawing.Point(31, 316);
             this.pnlTenDangNhap.Name = "pnlTenDangNhap";
-            this.pnlTenDangNhap.Size = new System.Drawing.Size(528, 1);
+            this.pnlTenDangNhap.Size = new System.Drawing.Size(420, 1);
             this.pnlTenDangNhap.TabIndex = 13;
             // 
             // pnlMatKhau
@@ -168,13 +175,13 @@
             this.pnlMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
             this.pnlMatKhau.Location = new System.Drawing.Point(30, 393);
             this.pnlMatKhau.Name = "pnlMatKhau";
-            this.pnlMatKhau.Size = new System.Drawing.Size(528, 1);
+            this.pnlMatKhau.Size = new System.Drawing.Size(420, 1);
             this.pnlMatKhau.TabIndex = 14;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(236, 108);
+            this.pictureBox2.Location = new System.Drawing.Point(182, 107);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(125, 125);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -184,39 +191,32 @@
             // txtAccount
             // 
             this.txtAccount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
-            this.txtAccount.Location = new System.Drawing.Point(172, 288);
-            this.txtAccount.MinimumSize = new System.Drawing.Size(383, 25);
+            this.txtAccount.Location = new System.Drawing.Point(171, 288);
             this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(386, 19);
+            this.txtAccount.Size = new System.Drawing.Size(278, 20);
             this.txtAccount.TabIndex = 0;
+            this.txtAccount.TextChanged += new System.EventHandler(this.txtAccount_TextChanged);
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(133)))), ((int)(((byte)(204)))));
-            this.txtPassword.Location = new System.Drawing.Point(118, 366);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(390, 20);
+            this.txtPassword.Location = new System.Drawing.Point(121, 366);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(399, 20);
+            this.txtPassword.Size = new System.Drawing.Size(287, 20);
             this.txtPassword.TabIndex = 0;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "EyeHide.PNG");
-            this.imageList1.Images.SetKeyName(1, "Eye.PNG");
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // FormLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(480, 540);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtAccount);
             this.Controls.Add(this.pictureBox2);

@@ -8,16 +8,21 @@ namespace DataTransferObject
 {
     public class CategoryDTO
     {
+        private int _CategoryId;
         private string _CategoryName;
-        private int _FeatureId;
+        private string _CategoryDescription;
+
         public CategoryDTO() { }
-        public CategoryDTO(string categoryName, int featureId)
+        public CategoryDTO(int categoryId, string categoryName, string categoryDescription)
         {
-            CategoryName=categoryName;
-            FeatureId=featureId;
+            _CategoryId=categoryId;
+            _CategoryName=categoryName;
+            _CategoryDescription=categoryDescription;
         }
-        public int CategoryId { get; set; }
+
+        public int CategoryId { get => _CategoryId; set => _CategoryId = value; }
         public string CategoryName { get => _CategoryName; set => _CategoryName = value; }
-        public int FeatureId { get => _FeatureId; set => _FeatureId=value; }
+        public string CategoryDescription { get => _CategoryDescription; set => _CategoryDescription=value; }
+        public string SearchFollowCategoryName { get; set; }
     }
 }

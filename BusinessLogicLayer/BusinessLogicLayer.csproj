@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryBLL.cs" />
-    <Compile Include="CustommerBLL.cs" />
+    <Compile Include="CustomerBLL.cs" />
     <Compile Include="FeatureBLL.cs" />
+    <Compile Include="FeatureByCategoryBLL.cs" />
     <Compile Include="InvoiceBLL.cs" />
     <Compile Include="InvoiceDetailBLL.cs" />
     <Compile Include="ProductBLL.cs" />

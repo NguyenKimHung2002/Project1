@@ -18,8 +18,8 @@ namespace DataAccessLayer
             cmd.CommandText = "CreateInvoice";
             cmd.Connection = Connect();
             cmd.Parameters.AddWithValue("@InvoiceDateTime", invoiceDTO.InvoiceDateTime);
-            cmd.Parameters.AddWithValue("@CustommerNo", invoiceDTO.CustommerNo);
-            cmd.Parameters.AddWithValue("@StaffNo", invoiceDTO.StaffNo);
+            cmd.Parameters.AddWithValue("@CustommerId", invoiceDTO.CustomerId);
+            cmd.Parameters.AddWithValue("@StaffId", invoiceDTO.StaffId);
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -34,7 +34,7 @@ namespace DataAccessLayer
         }
         public int GetInvoiceNoDAL(InvoiceDTO invoiceDTO)
         {
-            SqlDataAdapter da = new SqlDataAdapter("Get_InvoiceNo", Connect());
+            SqlDataAdapter da = new SqlDataAdapter("Get_InvoiceId", Connect());
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             da.SelectCommand.Connection = Connect();
             DataTable dt = new DataTable();

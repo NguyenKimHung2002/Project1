@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryDTO.cs" />
-    <Compile Include="CustommerDTO.cs" />
+    <Compile Include="CustomerDTO.cs" />
+    <Compile Include="FeatureByCategoryDTO.cs" />
     <Compile Include="FeatureDTO.cs" />
     <Compile Include="InvoiceDetailDTO.cs" />
     <Compile Include="InvoiceDTO.cs" />

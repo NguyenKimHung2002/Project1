@@ -8,25 +8,32 @@ namespace DataTransferObject
 {
     public class InvoiceDetailDTO
     {
-        private int _InvoiceDetailNo;
-        private int _InvoiceNo;
-        private string _ProductNo;
-        private int _UnitPrice;
-        private int _ProductNumber;
+        private int _InvoiceDetailId;
+        private int _InvoiceId;
+        private string _ProductId;
+        private int _SequenceNo;
+        private float _QuantityNo;
+        private float _UnitPrice;
+        private float _Discount;
+
         public InvoiceDetailDTO() { }
-        public InvoiceDetailDTO(int invoiceDetailNo, int invoiceNo, string productNo, int unitPrice, int productNumber)
+        public InvoiceDetailDTO(int invoiceDetailId, int invoiceId, string productId, int sequenceNo, float quantityNo, float unitPrice, float discount)
         {
-            InvoiceDetailNo=invoiceDetailNo;
-            InvoiceNo=invoiceNo;
-            ProductNo=productNo;
-            UnitPrice=unitPrice;
-            ProductNumber=productNumber;
+            _InvoiceDetailId=invoiceDetailId;
+            _InvoiceId=invoiceId;
+            _ProductId=productId;
+            _SequenceNo=sequenceNo;
+            _QuantityNo=quantityNo;
+            _UnitPrice=unitPrice;
+            _Discount=discount;
         }
 
-        public int InvoiceDetailNo { get => _InvoiceDetailNo; set => _InvoiceDetailNo = value; }
-        public int InvoiceNo { get => _InvoiceNo; set => _InvoiceNo = value; }
-        public string ProductNo { get => _ProductNo; set => _ProductNo = value; }
-        public int UnitPrice { get => _UnitPrice; set => _UnitPrice = value; }
-        public int ProductNumber { get => _ProductNumber; set => _ProductNumber=value; }
+        public int InvoiceDetailId { get => _InvoiceDetailId; set => _InvoiceDetailId = value; }
+        public int InvoiceId { get => _InvoiceId; set => _InvoiceId = value; }
+        public string ProductId { get => _ProductId; set => _ProductId = value; }
+        public int SequenceNo { get => _SequenceNo; set => _SequenceNo = value; }
+        public float QuantityNo { get => _QuantityNo; set => _QuantityNo = value; }
+        public float UnitPrice { get => _UnitPrice; set => _UnitPrice = value; }
+        public float Discount { get => _Discount; set => _Discount=value; }
     }
 }

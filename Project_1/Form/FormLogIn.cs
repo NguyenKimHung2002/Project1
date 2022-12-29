@@ -38,8 +38,9 @@ namespace Project_1
                 NameLogIn = staffBLL.GetStaffNameBLL(staffDTO);
                 StaffNoLogIn = staffBLL.GetStaffNoBLL(staffDTO);
                 //MessageBox.Show("Chào mừng Admin đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                //this.Hide();
                 FormMain formMain = new FormMain();
-                this.Close();
                 formMain.ShowDialog();
             }
             else if (code == 1)
@@ -90,6 +91,30 @@ namespace Project_1
                 toolTip1.Show("Hiện mật khẩu", btnShowPass);
             else
                 toolTip1.Show("Ẩn mật khẩu", btnShowPass);
+        }
+
+        private void txtAccount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAccount.Text != "" && txtPassword.Text != "")
+            {
+                btnDangNhap.BackColor = Color.FromArgb(0, 122, 204);
+            }
+            else
+            {
+                btnDangNhap.BackColor = Color.DimGray;
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAccount.Text != "" && txtPassword.Text != "")
+            {
+                btnDangNhap.BackColor = Color.FromArgb(0, 122, 204);
+            }
+            else
+            {
+                btnDangNhap.BackColor = Color.DimGray;
+            }
         }
     }
 }

@@ -18,10 +18,10 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "CreateInvoiceDetail";
             cmd.Connection = Connect();
-            cmd.Parameters.AddWithValue("@InvoiceNo", invoiceDetailDTO.InvoiceNo);
-            cmd.Parameters.AddWithValue("@ProductNo", invoiceDetailDTO.ProductNo);
+            cmd.Parameters.AddWithValue("@InvoiceId", invoiceDetailDTO.InvoiceId);
+            cmd.Parameters.AddWithValue("@ProductId", invoiceDetailDTO.ProductId);
             cmd.Parameters.AddWithValue("@UnitPrice", invoiceDetailDTO.UnitPrice);
-            cmd.Parameters.AddWithValue("@ProductNumber", invoiceDetailDTO.ProductNumber);
+            cmd.Parameters.AddWithValue("@ProductNumber", invoiceDetailDTO.QuantityNo);
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();
             cmd.Connection.Close();

@@ -26,6 +26,13 @@ namespace Project_1
             //FormLogIn formLogIn = new FormLogIn();
             lblPer.Text = "Admin";
             lblName.Text = FormLogIn.NameLogIn;
+            Cursor = Cursors.AppStarting;
+            moveSidePanel(btnCustommer);
+            UserControlCustomer userControlForm = new UserControlCustomer();
+            userControlForm.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(userControlForm);
+            Cursor = Cursors.Default;
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -40,7 +47,7 @@ namespace Project_1
         {
             Cursor = Cursors.AppStarting;
             moveSidePanel(btnCustommer);
-            UserControlCustommer userControlForm = new UserControlCustommer();
+            UserControlCustomer userControlForm = new UserControlCustomer();
             userControlForm.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(userControlForm);
@@ -57,12 +64,41 @@ namespace Project_1
             panelMain.Controls.Add(userControlPayment);
             Cursor = Cursors.Default;
         }
-
-        
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.AppStarting;
+            moveSidePanel(btnProduct);
+            UserControlProduct userControlProduct = new UserControlProduct();
+            userControlProduct.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(userControlProduct);
+            Cursor = Cursors.Default;
+        }
+        private void btnFeature_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.AppStarting;
+            moveSidePanel(btnFeature);
+            UserControlFeature userControlFeature = new UserControlFeature();
+            userControlFeature.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(userControlFeature);
+            Cursor = Cursors.Default;
+        }
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.AppStarting;
+            moveSidePanel(btnCategory);
+            UserControlCategory userControlCategory = new UserControlCategory();
+            userControlCategory.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(userControlCategory);
+            Cursor = Cursors.Default;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now.Add(new TimeSpan());
             lblTimeCur.Text = String.Format("{0:hh:mm:ss tt dd/MM/yyyy}", dt);
         }
+        
     }
 }

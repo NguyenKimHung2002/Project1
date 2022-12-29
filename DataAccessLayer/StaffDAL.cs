@@ -28,7 +28,7 @@ namespace DataAccessLayer
         }
         public int GetStaffNoDAL(StaffDTO staffDTO)
         {
-            SqlDataAdapter da = new SqlDataAdapter("proc_GetStaffNo", Connect());
+            SqlDataAdapter da = new SqlDataAdapter("proc_GetStaffId", Connect());
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             da.SelectCommand.Parameters.AddWithValue("@Username", staffDTO.StaffAccount);
             da.SelectCommand.Parameters.AddWithValue("@Password", staffDTO.StaffPassword);

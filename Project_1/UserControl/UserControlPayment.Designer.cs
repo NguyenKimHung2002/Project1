@@ -39,9 +39,9 @@
             this.btnResetFilter = new System.Windows.Forms.Button();
             this.btnAddToInvoice = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
-            this.cbFilterFeatureTag = new System.Windows.Forms.ComboBox();
+            this.cbFeatureName = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbFilterCategoryName = new System.Windows.Forms.ComboBox();
+            this.cbCategoryName = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.picFilterProductName = new System.Windows.Forms.PictureBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
@@ -56,16 +56,6 @@
             this.lblSumMoney = new System.Windows.Forms.Label();
             this.lblSumInvoice = new System.Windows.Forms.Label();
             this.dgvInvoiceDetail = new System.Windows.Forms.DataGridView();
-            this.txtCustommerPhone = new System.Windows.Forms.TextBox();
-            this.txtCustommerName = new System.Windows.Forms.TextBox();
-            this.lblNote = new System.Windows.Forms.Label();
-            this.dgvShowDataProduct = new System.Windows.Forms.DataGridView();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblPageNumber = new System.Windows.Forms.Label();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtProductNumber = new System.Windows.Forms.TextBox();
-            this.lblProductNo = new System.Windows.Forms.Label();
             this.ColMaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +64,16 @@
             this.ColSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRemove = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCustomerPhone = new System.Windows.Forms.TextBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.dgvShowDataProduct = new System.Windows.Forms.DataGridView();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lblPageNumber = new System.Windows.Forms.Label();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtProductNumber = new System.Windows.Forms.TextBox();
+            this.lblProductNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picSuccess)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFilterProductName)).BeginInit();
@@ -205,16 +205,16 @@
             this.label25.Text = "Đặc tính nổi bật";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cbFilterFeatureTag
+            // cbFeatureName
             // 
-            this.cbFilterFeatureTag.BackColor = System.Drawing.Color.White;
-            this.cbFilterFeatureTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cbFilterFeatureTag.ForeColor = System.Drawing.Color.Black;
-            this.cbFilterFeatureTag.FormattingEnabled = true;
-            this.cbFilterFeatureTag.Location = new System.Drawing.Point(728, 66);
-            this.cbFilterFeatureTag.Name = "cbFilterFeatureTag";
-            this.cbFilterFeatureTag.Size = new System.Drawing.Size(81, 21);
-            this.cbFilterFeatureTag.TabIndex = 74;
+            this.cbFeatureName.BackColor = System.Drawing.Color.White;
+            this.cbFeatureName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbFeatureName.ForeColor = System.Drawing.Color.Black;
+            this.cbFeatureName.FormattingEnabled = true;
+            this.cbFeatureName.Location = new System.Drawing.Point(728, 66);
+            this.cbFeatureName.Name = "cbFeatureName";
+            this.cbFeatureName.Size = new System.Drawing.Size(81, 21);
+            this.cbFeatureName.TabIndex = 74;
             // 
             // label8
             // 
@@ -228,16 +228,16 @@
             this.label8.Text = "Loại sản phẩm";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cbFilterCategoryName
+            // cbCategoryName
             // 
-            this.cbFilterCategoryName.BackColor = System.Drawing.Color.White;
-            this.cbFilterCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cbFilterCategoryName.ForeColor = System.Drawing.Color.Black;
-            this.cbFilterCategoryName.FormattingEnabled = true;
-            this.cbFilterCategoryName.Location = new System.Drawing.Point(627, 66);
-            this.cbFilterCategoryName.Name = "cbFilterCategoryName";
-            this.cbFilterCategoryName.Size = new System.Drawing.Size(79, 21);
-            this.cbFilterCategoryName.TabIndex = 69;
+            this.cbCategoryName.BackColor = System.Drawing.Color.White;
+            this.cbCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbCategoryName.ForeColor = System.Drawing.Color.Black;
+            this.cbCategoryName.FormattingEnabled = true;
+            this.cbCategoryName.Location = new System.Drawing.Point(627, 66);
+            this.cbCategoryName.Name = "cbCategoryName";
+            this.cbCategoryName.Size = new System.Drawing.Size(79, 21);
+            this.cbCategoryName.TabIndex = 69;
             // 
             // panel7
             // 
@@ -427,23 +427,82 @@
             this.dgvInvoiceDetail.Size = new System.Drawing.Size(408, 212);
             this.dgvInvoiceDetail.TabIndex = 88;
             // 
-            // txtCustommerPhone
+            // ColMaSP
             // 
-            this.txtCustommerPhone.ForeColor = System.Drawing.Color.LightGray;
-            this.txtCustommerPhone.Location = new System.Drawing.Point(120, 47);
-            this.txtCustommerPhone.Name = "txtCustommerPhone";
-            this.txtCustommerPhone.Size = new System.Drawing.Size(191, 20);
-            this.txtCustommerPhone.TabIndex = 89;
-            this.txtCustommerPhone.TextChanged += new System.EventHandler(this.txtCustommerPhone_TextChanged);
-            this.txtCustommerPhone.Enter += new System.EventHandler(this.txtCustommerPhone_Enter);
-            this.txtCustommerPhone.Leave += new System.EventHandler(this.txtCustommerPhone_Leave);
+            this.ColMaSP.HeaderText = "Mã SP";
+            this.ColMaSP.Name = "ColMaSP";
+            this.ColMaSP.ReadOnly = true;
+            this.ColMaSP.Width = 50;
             // 
-            // txtCustommerName
+            // ColProductName
             // 
-            this.txtCustommerName.Location = new System.Drawing.Point(120, 85);
-            this.txtCustommerName.Name = "txtCustommerName";
-            this.txtCustommerName.Size = new System.Drawing.Size(191, 20);
-            this.txtCustommerName.TabIndex = 90;
+            this.ColProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColProductName.HeaderText = "Tên Sản phẩm";
+            this.ColProductName.Name = "ColProductName";
+            this.ColProductName.ReadOnly = true;
+            // 
+            // ColDonGia
+            // 
+            this.ColDonGia.HeaderText = "Đơn giá";
+            this.ColDonGia.Name = "ColDonGia";
+            this.ColDonGia.ReadOnly = true;
+            this.ColDonGia.Width = 50;
+            // 
+            // ColKhuyenMai
+            // 
+            this.ColKhuyenMai.HeaderText = "KM";
+            this.ColKhuyenMai.Name = "ColKhuyenMai";
+            this.ColKhuyenMai.ReadOnly = true;
+            this.ColKhuyenMai.Visible = false;
+            this.ColKhuyenMai.Width = 40;
+            // 
+            // ColSoLuong
+            // 
+            this.ColSoLuong.HeaderText = "Số lượng";
+            this.ColSoLuong.Name = "ColSoLuong";
+            this.ColSoLuong.ReadOnly = true;
+            this.ColSoLuong.Width = 75;
+            // 
+            // ColSum
+            // 
+            this.ColSum.HeaderText = "Thành tiền";
+            this.ColSum.Name = "ColSum";
+            this.ColSum.ReadOnly = true;
+            this.ColSum.Width = 85;
+            // 
+            // ColRemove
+            // 
+            this.ColRemove.HeaderText = "";
+            this.ColRemove.Name = "ColRemove";
+            this.ColRemove.ReadOnly = true;
+            this.ColRemove.Visible = false;
+            this.ColRemove.Width = 15;
+            // 
+            // ColCreate
+            // 
+            this.ColCreate.HeaderText = "";
+            this.ColCreate.Name = "ColCreate";
+            this.ColCreate.ReadOnly = true;
+            this.ColCreate.Visible = false;
+            this.ColCreate.Width = 15;
+            // 
+            // txtCustomerPhone
+            // 
+            this.txtCustomerPhone.ForeColor = System.Drawing.Color.LightGray;
+            this.txtCustomerPhone.Location = new System.Drawing.Point(120, 47);
+            this.txtCustomerPhone.Name = "txtCustomerPhone";
+            this.txtCustomerPhone.Size = new System.Drawing.Size(191, 20);
+            this.txtCustomerPhone.TabIndex = 89;
+            this.txtCustomerPhone.TextChanged += new System.EventHandler(this.txtCustommerPhone_TextChanged);
+            this.txtCustomerPhone.Enter += new System.EventHandler(this.txtCustommerPhone_Enter);
+            this.txtCustomerPhone.Leave += new System.EventHandler(this.txtCustommerPhone_Leave);
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Location = new System.Drawing.Point(120, 85);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(191, 20);
+            this.txtCustomerName.TabIndex = 90;
             // 
             // lblNote
             // 
@@ -540,65 +599,6 @@
             this.lblProductNo.TabIndex = 99;
             this.lblProductNo.Text = "Sản phẩm";
             // 
-            // ColMaSP
-            // 
-            this.ColMaSP.HeaderText = "Mã SP";
-            this.ColMaSP.Name = "ColMaSP";
-            this.ColMaSP.ReadOnly = true;
-            this.ColMaSP.Width = 50;
-            // 
-            // ColProductName
-            // 
-            this.ColProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColProductName.HeaderText = "Tên Sản phẩm";
-            this.ColProductName.Name = "ColProductName";
-            this.ColProductName.ReadOnly = true;
-            // 
-            // ColDonGia
-            // 
-            this.ColDonGia.HeaderText = "Đơn giá";
-            this.ColDonGia.Name = "ColDonGia";
-            this.ColDonGia.ReadOnly = true;
-            this.ColDonGia.Width = 50;
-            // 
-            // ColKhuyenMai
-            // 
-            this.ColKhuyenMai.HeaderText = "KM";
-            this.ColKhuyenMai.Name = "ColKhuyenMai";
-            this.ColKhuyenMai.ReadOnly = true;
-            this.ColKhuyenMai.Visible = false;
-            this.ColKhuyenMai.Width = 40;
-            // 
-            // ColSoLuong
-            // 
-            this.ColSoLuong.HeaderText = "Số lượng";
-            this.ColSoLuong.Name = "ColSoLuong";
-            this.ColSoLuong.ReadOnly = true;
-            this.ColSoLuong.Width = 75;
-            // 
-            // ColSum
-            // 
-            this.ColSum.HeaderText = "Thành tiền";
-            this.ColSum.Name = "ColSum";
-            this.ColSum.ReadOnly = true;
-            this.ColSum.Width = 85;
-            // 
-            // ColRemove
-            // 
-            this.ColRemove.HeaderText = "";
-            this.ColRemove.Name = "ColRemove";
-            this.ColRemove.ReadOnly = true;
-            this.ColRemove.Visible = false;
-            this.ColRemove.Width = 15;
-            // 
-            // ColCreate
-            // 
-            this.ColCreate.HeaderText = "";
-            this.ColCreate.Name = "ColCreate";
-            this.ColCreate.ReadOnly = true;
-            this.ColCreate.Visible = false;
-            this.ColCreate.Width = 15;
-            // 
             // UserControlPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,8 +612,8 @@
             this.Controls.Add(this.btnPre);
             this.Controls.Add(this.dgvShowDataProduct);
             this.Controls.Add(this.lblNote);
-            this.Controls.Add(this.txtCustommerName);
-            this.Controls.Add(this.txtCustommerPhone);
+            this.Controls.Add(this.txtCustomerName);
+            this.Controls.Add(this.txtCustomerPhone);
             this.Controls.Add(this.dgvInvoiceDetail);
             this.Controls.Add(this.txtExcessMoneyReturned);
             this.Controls.Add(this.lblExcessMoneyReturned);
@@ -630,9 +630,9 @@
             this.Controls.Add(this.btnResetFilter);
             this.Controls.Add(this.btnAddToInvoice);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.cbFilterFeatureTag);
+            this.Controls.Add(this.cbFeatureName);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbFilterCategoryName);
+            this.Controls.Add(this.cbCategoryName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.picSuccess);
             this.Controls.Add(this.lblCustommerName);
@@ -665,9 +665,9 @@
         private System.Windows.Forms.Button btnResetFilter;
         private System.Windows.Forms.Button btnAddToInvoice;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox cbFilterFeatureTag;
+        private System.Windows.Forms.ComboBox cbFeatureName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbFilterCategoryName;
+        private System.Windows.Forms.ComboBox cbCategoryName;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox picFilterProductName;
         private System.Windows.Forms.TextBox txtProductName;
@@ -682,8 +682,8 @@
         private System.Windows.Forms.Label lblSumMoney;
         private System.Windows.Forms.Label lblSumInvoice;
         private System.Windows.Forms.DataGridView dgvInvoiceDetail;
-        private System.Windows.Forms.TextBox txtCustommerPhone;
-        private System.Windows.Forms.TextBox txtCustommerName;
+        private System.Windows.Forms.TextBox txtCustomerPhone;
+        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.DataGridView dgvShowDataProduct;
         private System.Windows.Forms.Button btnNext;

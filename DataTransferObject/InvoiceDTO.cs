@@ -8,22 +8,25 @@ namespace DataTransferObject
 {
     public class InvoiceDTO
     {
-        private int _InvoiceNo;
+        private int _InvoiceId;
         private DateTime _InvoiceDateTime;
-        private int _CustommerNo;
-        private int _StaffNo;
+        private string _PaymentMethod;
+        private int _CustomerId;
+        private int _StaffId;
         public InvoiceDTO() { }
-        public InvoiceDTO(int invoiceNo, DateTime invoiceDateTime, int custommerNo, int staffNo)
+        public InvoiceDTO(int invoiceId, DateTime invoiceDateTime, string paymentMethod, int customerId, int staffId)
         {
-            InvoiceNo=invoiceNo;
-            InvoiceDateTime=invoiceDateTime;
-            CustommerNo=custommerNo;
-            StaffNo=staffNo;
+            _InvoiceId=invoiceId;
+            _InvoiceDateTime=invoiceDateTime;
+            _PaymentMethod=paymentMethod;
+            _CustomerId=customerId;
+            _StaffId=staffId;
         }
 
-        public int InvoiceNo { get => _InvoiceNo; set => _InvoiceNo = value; }
+        public int InvoiceId { get => _InvoiceId; set => _InvoiceId = value; }
         public DateTime InvoiceDateTime { get => _InvoiceDateTime; set => _InvoiceDateTime = value; }
-        public int CustommerNo { get => _CustommerNo; set => _CustommerNo = value; }
-        public int StaffNo { get => _StaffNo; set => _StaffNo=value; }
+        public string PaymentMethod { get => _PaymentMethod; set => _PaymentMethod = value; }
+        public int CustomerId { get => _CustomerId; set => _CustomerId = value; }
+        public int StaffId { get => _StaffId; set => _StaffId=value; }
     }
 }

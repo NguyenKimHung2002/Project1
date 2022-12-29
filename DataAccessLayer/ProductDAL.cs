@@ -28,7 +28,7 @@ namespace DataAccessLayer
             Connect().Open();
             SqlDataAdapter da = new SqlDataAdapter("proc_AddProductIntoInvoice", Connect());
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
-            da.SelectCommand.Parameters.AddWithValue("@ProductNo", productDTO.ProductNo);
+            da.SelectCommand.Parameters.AddWithValue("@ProductId", productDTO.ProductId);
             da.Fill(dt);
             Connect().Close();
             return dt;
