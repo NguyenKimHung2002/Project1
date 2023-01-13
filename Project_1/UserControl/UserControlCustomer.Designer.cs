@@ -53,9 +53,9 @@
             // 
             this.dgvShowDataCustomer.BackgroundColor = System.Drawing.Color.White;
             this.dgvShowDataCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowDataCustomer.Location = new System.Drawing.Point(418, 65);
+            this.dgvShowDataCustomer.Location = new System.Drawing.Point(380, 65);
             this.dgvShowDataCustomer.Name = "dgvShowDataCustomer";
-            this.dgvShowDataCustomer.Size = new System.Drawing.Size(341, 220);
+            this.dgvShowDataCustomer.Size = new System.Drawing.Size(379, 220);
             this.dgvShowDataCustomer.TabIndex = 11;
             this.dgvShowDataCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataCustomer_CellClick);
             // 
@@ -137,7 +137,7 @@
             this.panel7.Controls.Add(this.pictureBox2);
             this.panel7.Controls.Add(this.txtSearchFollowCustomerName);
             this.panel7.ForeColor = System.Drawing.Color.Black;
-            this.panel7.Location = new System.Drawing.Point(418, 37);
+            this.panel7.Location = new System.Drawing.Point(380, 37);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(193, 22);
             this.panel7.TabIndex = 78;
@@ -158,7 +158,7 @@
             this.txtSearchFollowCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchFollowCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchFollowCustomerName.ForeColor = System.Drawing.Color.LightGray;
-            this.txtSearchFollowCustomerName.Location = new System.Drawing.Point(3, 3);
+            this.txtSearchFollowCustomerName.Location = new System.Drawing.Point(3, 4);
             this.txtSearchFollowCustomerName.Name = "txtSearchFollowCustomerName";
             this.txtSearchFollowCustomerName.Size = new System.Drawing.Size(167, 13);
             this.txtSearchFollowCustomerName.TabIndex = 0;

@@ -152,8 +152,10 @@
       <Name>DataTransferObjects</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ReSources\" />
+    <Content Include="ReSources\icons8-synchronize-24.png" />
+    <Content Include="ReSources\ProductBr.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

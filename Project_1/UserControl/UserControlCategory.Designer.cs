@@ -197,6 +197,7 @@
             this.dgvShowDataCategory.Name = "dgvShowDataCategory";
             this.dgvShowDataCategory.Size = new System.Drawing.Size(414, 336);
             this.dgvShowDataCategory.TabIndex = 91;
+            this.dgvShowDataCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataCategory_CellClick);
             // 
             // pictureBox2
             // 

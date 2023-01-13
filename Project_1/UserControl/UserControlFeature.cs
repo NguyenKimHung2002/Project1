@@ -23,6 +23,9 @@ namespace Project_1
         private void UserControlFeature_Load(object sender, EventArgs e)
         {
             dgvShowDataFeature.DataSource = featureBLL.GetDataFeatureBLL();
+            dgvShowDataFeature.Columns[0].Width = 90;
+            dgvShowDataFeature.Columns[1].Width = 112;
+            dgvShowDataFeature.Columns[2].Width = 200;
             txtFeatureId.Text = "Thêm mới không cần nhập";
             txtSearchFollowFeatureName.Text = "Tìm kiếm theo tên đặc tính";
         }

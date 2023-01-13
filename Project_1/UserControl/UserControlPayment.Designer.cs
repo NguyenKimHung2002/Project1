@@ -67,18 +67,18 @@
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
-            this.dgvShowDataProduct = new System.Windows.Forms.DataGridView();
+            this.dgvShowDataPayment = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.btnPre = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.txtProductNumber = new System.Windows.Forms.TextBox();
             this.lblProductNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picSuccess)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFilterProductName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowDataProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowDataPayment)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -260,7 +260,6 @@
             this.picFilterProductName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFilterProductName.TabIndex = 61;
             this.picFilterProductName.TabStop = false;
-            this.picFilterProductName.Click += new System.EventHandler(this.picFilterProductName_Click);
             // 
             // txtProductName
             // 
@@ -432,12 +431,12 @@
             this.ColMaSP.HeaderText = "Mã SP";
             this.ColMaSP.Name = "ColMaSP";
             this.ColMaSP.ReadOnly = true;
-            this.ColMaSP.Width = 50;
+            this.ColMaSP.Width = 64;
             // 
             // ColProductName
             // 
             this.ColProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColProductName.HeaderText = "Tên Sản phẩm";
+            this.ColProductName.HeaderText = "Tên SP";
             this.ColProductName.Name = "ColProductName";
             this.ColProductName.ReadOnly = true;
             // 
@@ -461,14 +460,14 @@
             this.ColSoLuong.HeaderText = "Số lượng";
             this.ColSoLuong.Name = "ColSoLuong";
             this.ColSoLuong.ReadOnly = true;
-            this.ColSoLuong.Width = 75;
+            this.ColSoLuong.Width = 76;
             // 
             // ColSum
             // 
             this.ColSum.HeaderText = "Thành tiền";
             this.ColSum.Name = "ColSum";
             this.ColSum.ReadOnly = true;
-            this.ColSum.Width = 85;
+            this.ColSum.Width = 84;
             // 
             // ColRemove
             // 
@@ -513,15 +512,15 @@
             this.lblNote.Size = new System.Drawing.Size(0, 13);
             this.lblNote.TabIndex = 92;
             // 
-            // dgvShowDataProduct
+            // dgvShowDataPayment
             // 
-            this.dgvShowDataProduct.BackgroundColor = System.Drawing.Color.White;
-            this.dgvShowDataProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowDataProduct.Location = new System.Drawing.Point(412, 150);
-            this.dgvShowDataProduct.Name = "dgvShowDataProduct";
-            this.dgvShowDataProduct.Size = new System.Drawing.Size(408, 240);
-            this.dgvShowDataProduct.TabIndex = 93;
-            this.dgvShowDataProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataProduct_CellClick);
+            this.dgvShowDataPayment.BackgroundColor = System.Drawing.Color.White;
+            this.dgvShowDataPayment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowDataPayment.Location = new System.Drawing.Point(412, 150);
+            this.dgvShowDataPayment.Name = "dgvShowDataPayment";
+            this.dgvShowDataPayment.Size = new System.Drawing.Size(408, 240);
+            this.dgvShowDataPayment.TabIndex = 93;
+            this.dgvShowDataPayment.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataProduct_CellClick);
             // 
             // btnNext
             // 
@@ -565,20 +564,21 @@
             this.btnPre.TabIndex = 95;
             this.btnPre.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnApply
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(480, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 21);
-            this.button1.TabIndex = 97;
-            this.button1.Text = "Áp dụng";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(145)))), ((int)(((byte)(249)))));
+            this.btnApply.FlatAppearance.BorderSize = 0;
+            this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApply.ForeColor = System.Drawing.Color.White;
+            this.btnApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApply.Location = new System.Drawing.Point(480, 94);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(67, 21);
+            this.btnApply.TabIndex = 97;
+            this.btnApply.Text = "Áp dụng";
+            this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // txtProductNumber
             // 
@@ -606,11 +606,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblProductNo);
             this.Controls.Add(this.txtProductNumber);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lblPageNumber);
             this.Controls.Add(this.btnPre);
-            this.Controls.Add(this.dgvShowDataProduct);
+            this.Controls.Add(this.dgvShowDataPayment);
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.txtCustomerPhone);
@@ -647,7 +647,7 @@
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFilterProductName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowDataProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowDataPayment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -685,11 +685,11 @@
         private System.Windows.Forms.TextBox txtCustomerPhone;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label lblNote;
-        private System.Windows.Forms.DataGridView dgvShowDataProduct;
+        private System.Windows.Forms.DataGridView dgvShowDataPayment;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblPageNumber;
         private System.Windows.Forms.Button btnPre;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.TextBox txtProductNumber;
         private System.Windows.Forms.Label lblProductNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColMaSP;

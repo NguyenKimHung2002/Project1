@@ -29,6 +29,7 @@ namespace Project_1
         {
             txtCategoryId.Text = "Thêm mới không cần nhập";
             txtSearchFollowCategoryName.Text = "Tìm kiếm theo tên danh mục";
+            ShowDataCategory();
             DataTable dt = featureBLL.GetFeatureNameBLL();
             for(int i=0; i<dt.Rows.Count; i++)
             {
@@ -70,10 +71,10 @@ namespace Project_1
             }
         }
         private void ShowDataCategory()
-        {
+        {   
             dgvShowDataCategory.DataSource = categoryBLL.GetDataCategoryBLL();
         }
-        public void Reset()
+        private void Reset()
         {
             txtCategoryId.Text = "Thêm mới không cần nhập";
             txtCategoryName.Text = "";
@@ -103,13 +104,16 @@ namespace Project_1
                 if (categoryBLL.AddCategoryBLL(categoryDTO) == true)
                 {
                     featureByCategoryDTO.CategoryId = categoryBLL.GetLastestCategoryId(categoryDTO);
-                    for(int i=0; i<lbShowFeature.Items.Count; i++)
+                    if(lbShowFeature.Items.Count > 0)
                     {
-                        featureDTO.FeatureName = lbShowFeature.Items[i].ToString();
-                        featureByCategoryDTO.FeatureId = featureBLL.GetFeatureIdByFeatureNameBLL(featureDTO);
-                        if (featureByCategoryBLL.AddFeatureByCategoryBLL(featureByCategoryDTO) == true)
+                        for (int i = 0; i<lbShowFeature.Items.Count; i++)
                         {
-                            continue;
+                            featureDTO.FeatureName = lbShowFeature.Items[i].ToString();
+                            featureByCategoryDTO.FeatureId = featureBLL.GetFeatureIdByFeatureNameBLL(featureDTO);
+                            if (featureByCategoryBLL.AddFeatureByCategoryBLL(featureByCategoryDTO) == true)
+                            {
+                                continue;
+                            }
                         }
                     }
                     MessageBox.Show("Thêm thành công.");
@@ -169,6 +173,18 @@ namespace Project_1
             else
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ.");
+            }
+        }
+
+        private void dgvShowDataCategory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            if (e.RowIndex != -1)
+            {
+                row = dgvShowDataCategory.Rows[e.RowIndex];
+                txtCategoryId.Text = Convert.ToString(row.Cells["Mã danh mục"].Value);
+                txtCategoryName.Text = Convert.ToString(row.Cells["Tên danh mục"].Value);
+                txtCategoryDescription.Text = Convert.ToString(row.Cells["Mô tả"].Value);
             }
         }
     }

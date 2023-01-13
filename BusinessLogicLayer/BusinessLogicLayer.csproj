@@ -45,6 +45,7 @@
     <Compile Include="CustomerBLL.cs" />
     <Compile Include="FeatureBLL.cs" />
     <Compile Include="FeatureByCategoryBLL.cs" />
+    <Compile Include="FeatureByProductBLL.cs" />
     <Compile Include="InvoiceBLL.cs" />
     <Compile Include="InvoiceDetailBLL.cs" />
     <Compile Include="ProductBLL.cs" />

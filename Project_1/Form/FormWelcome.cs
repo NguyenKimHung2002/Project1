@@ -17,12 +17,22 @@ namespace Project_1
             InitializeComponent();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnOpenLogin_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.AppStarting;
             FormLogIn formLogIn = new FormLogIn();
             formLogIn.ShowDialog();
             Cursor = Cursors.Default;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FormWelcome_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

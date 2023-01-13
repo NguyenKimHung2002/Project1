@@ -86,19 +86,30 @@ namespace Project_1
         }
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.AppStarting;
+            //Note: btnCategory properties: Visible=false;
+            MessageBox.Show("Chức năng này đang trong quá trình nâng cấp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            /*Cursor = Cursors.AppStarting;
             moveSidePanel(btnCategory);
             UserControlCategory userControlCategory = new UserControlCategory();
             userControlCategory.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(userControlCategory);
-            Cursor = Cursors.Default;
+            Cursor = Cursors.Default;*/
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now.Add(new TimeSpan());
             lblTimeCur.Text = String.Format("{0:hh:mm:ss tt dd/MM/yyyy}", dt);
         }
-        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

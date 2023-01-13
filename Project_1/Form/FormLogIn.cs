@@ -22,48 +22,58 @@ namespace Project_1
         private void FormLogIn_Shown(object sender, EventArgs e)
         {
             txtAccount.Focus();
+            
         }
         StaffBLL staffBLL = new StaffBLL();
         public static string NameLogIn = "";
         public static int StaffNoLogIn = 0;
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            LoginHandling();
+        }
+        private void LoginHandling()
+        {
             Cursor = Cursors.AppStarting;
             StaffDTO staffDTO = new StaffDTO();
             staffDTO.StaffAccount = txtAccount.Text;
             staffDTO.StaffPassword = txtPassword.Text;
             int code = staffBLL.CheckLoginBLL(staffDTO);
-            if (code == 0)
+            if(btnDangNhap.BackColor == Color.FromArgb(0, 122, 204))
             {
-                NameLogIn = staffBLL.GetStaffNameBLL(staffDTO);
-                StaffNoLogIn = staffBLL.GetStaffNoBLL(staffDTO);
-                //MessageBox.Show("Chào mừng Admin đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                //this.Hide();
-                FormMain formMain = new FormMain();
-                formMain.ShowDialog();
-            }
-            else if (code == 1)
-            {
-                //MessageBox.Show("Chào mừng Manager đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (code == 2)
-            {
-                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtAccount.Text = "";
-                txtPassword.Text = "";
-                txtAccount.Focus();
-            }
-            else
-            {
-                MessageBox.Show("Tài khoản không tồn tại !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtAccount.Text = "";
-                txtPassword.Text = "";
-                txtAccount.Focus();
+                if (code == 0)
+                {
+                    NameLogIn = staffBLL.GetStaffNameBLL(staffDTO);
+                    StaffNoLogIn = staffBLL.GetStaffNoBLL(staffDTO);
+                    //MessageBox.Show("Chào mừng Admin đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Hide();
+                    FormMain formMain = new FormMain();
+                    formMain.ShowDialog();
+                    txtAccount.Text = "";
+                    txtPassword.Text = "";
+                    txtAccount.Focus();
+                }
+                else if (code == 1)
+                {
+                    //MessageBox.Show("Chào mừng Manager đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (code == 2)
+                {
+                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtAccount.Text = "";
+                    txtPassword.Text = "";
+                    txtAccount.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản không tồn tại !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtAccount.Text = "";
+                    txtPassword.Text = "";
+                    txtAccount.Focus();
+                }
             }
             Cursor = Cursors.Default;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -114,6 +124,28 @@ namespace Project_1
             else
             {
                 btnDangNhap.BackColor = Color.DimGray;
+            }
+        }
+
+        private void txtAccount_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(txtAccount.Text != "" && txtPassword.Text != "")
+            {
+                if(e.KeyCode == Keys.Enter)
+                {
+                    LoginHandling();
+                }
+            }
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(txtAccount.Text != "" && txtPassword.Text != "")
+            {
+                if(e.KeyCode == Keys.Enter)
+                {
+                    LoginHandling();
+                }
             }
         }
     }

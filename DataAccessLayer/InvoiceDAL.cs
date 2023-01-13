@@ -18,8 +18,9 @@ namespace DataAccessLayer
             cmd.CommandText = "CreateInvoice";
             cmd.Connection = Connect();
             cmd.Parameters.AddWithValue("@InvoiceDateTime", invoiceDTO.InvoiceDateTime);
-            cmd.Parameters.AddWithValue("@CustommerId", invoiceDTO.CustomerId);
+            cmd.Parameters.AddWithValue("@CustomerId", invoiceDTO.CustomerId);
             cmd.Parameters.AddWithValue("@StaffId", invoiceDTO.StaffId);
+            cmd.Parameters.AddWithValue("@PaymentMethod", invoiceDTO.PaymentMethod);
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();
             cmd.Connection.Close();

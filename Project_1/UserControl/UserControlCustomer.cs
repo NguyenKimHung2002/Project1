@@ -65,6 +65,9 @@ namespace Project_1
         private void ShowDataCustomer()
         {
             dgvShowDataCustomer.DataSource = customerBLL.GetDataCustomerBLL();
+            dgvShowDataCustomer.Columns[0].Width = 108;
+            dgvShowDataCustomer.Columns[1].Width = 112;
+            dgvShowDataCustomer.Columns[2].Width = 115;
         }
         private void Reset()
         {
@@ -76,22 +79,29 @@ namespace Project_1
         {
             customerDTO.CustomerName = txtCustomerName.Text;
             customerDTO.CustomerPhone = txtCustomerPhone.Text;
-            if (customerDTO.CustomerName != "" && customerDTO.CustomerPhone != "")
+            try
             {
-                if (customerBLL.AddCustomerBLL(customerDTO) == true)
+                if (customerDTO.CustomerName != "" && customerDTO.CustomerPhone != "")
                 {
-                    MessageBox.Show("Thêm thành công.");
-                    ShowDataCustomer();
-                    Reset();
+                    if (customerBLL.AddCustomerBLL(customerDTO) == true)
+                    {
+                        MessageBox.Show("Thêm thành công.");
+                        ShowDataCustomer();
+                        Reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm không thành công.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Thêm không thành công.");
+                    MessageBox.Show("Vui lòng nhập đầy đủ.");
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
+                MessageBox.Show(ex.Message);
             }
         }
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
@@ -99,43 +109,57 @@ namespace Project_1
             customerDTO.CustomerName = txtCustomerName.Text;
             customerDTO.CustomerPhone = txtCustomerPhone.Text;
             customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
-            if (txtCustomerName.Text != "" && txtCustomerPhone.Text != "" && txtCustomerId.Text != "")
+            try
             {
-                if (customerBLL.UpdateCustomerBLL(customerDTO))
+                if (txtCustomerName.Text != "" && txtCustomerPhone.Text != "" && txtCustomerId.Text != "")
                 {
-                    MessageBox.Show("Cập nhật thành công.");
-                    ShowDataCustomer();
-                    Reset();
+                    if (customerBLL.UpdateCustomerBLL(customerDTO))
+                    {
+                        MessageBox.Show("Cập nhật thành công.");
+                        ShowDataCustomer();
+                        Reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm không thành công.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Thêm không thành công.");
+                    MessageBox.Show("Vui lòng nhập đầy đủ.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
+                MessageBox.Show(ex.Message);
             }
         }
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
         {
             customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
-            if (txtCustomerId.Text != "" && txtCustomerName.Text != "" && txtCustomerPhone.Text != "")
+            try
             {
-                if (customerBLL.DeleteCustomerBLL(customerDTO))
+                if (txtCustomerId.Text != "" && txtCustomerName.Text != "" && txtCustomerPhone.Text != "")
                 {
-                    MessageBox.Show("Xóa thành công.");
-                    ShowDataCustomer();
-                    Reset();
+                    if (customerBLL.DeleteCustomerBLL(customerDTO))
+                    {
+                        MessageBox.Show("Xóa thành công.");
+                        ShowDataCustomer();
+                        Reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Xóa không thành công");
+                    MessageBox.Show("Vui lòng nhập đầy đủ.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
+                MessageBox.Show(ex.Message);
             }
         }
         private void txtSearchFollowCustomerName_TextChanged(object sender, EventArgs e)
@@ -163,7 +187,5 @@ namespace Project_1
                 txtCustomerPhone.Text = Convert.ToString(row.Cells["SĐT khách hàng"].Value);
             }
         }
-
-        
     }   
 }

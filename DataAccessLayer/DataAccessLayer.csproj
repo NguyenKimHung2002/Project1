@@ -47,6 +47,7 @@
     <Compile Include="CustomerDAL.cs" />
     <Compile Include="ConnectDB.cs" />
     <Compile Include="FeatureByCategoryDAL.cs" />
+    <Compile Include="FeatureByProductDAL.cs" />
     <Compile Include="FeatureDAL.cs" />
     <Compile Include="InvoiceDAL.cs" />
     <Compile Include="InvoiceDetailDAL.cs" />

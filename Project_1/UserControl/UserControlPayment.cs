@@ -52,9 +52,9 @@ namespace Project_1
             cbFeatureName.ValueMember = "Đặc tính";
             cbFeatureName.SelectedIndex = cbFeatureName.Items.Count - 1;
         }
-        private void ShowDataProduct()
+        private void ShowDataPayment()
         {
-            dgvShowDataProduct.DataSource = productBLL.GetDataProductBLL();
+            dgvShowDataPayment.DataSource = productBLL.GetDataPaymentBLL();
         }
         private void PhoneText_Enter(object sender, EventArgs e)
         {
@@ -170,11 +170,11 @@ namespace Project_1
             DataGridViewRow row = new DataGridViewRow();
             if (e.RowIndex != -1)
             {
-                row = dgvShowDataProduct.Rows[e.RowIndex];
-                txtProductName.Text = Convert.ToString(row.Cells["ProductName"].Value);
+                row = dgvShowDataPayment.Rows[e.RowIndex];
+                txtProductName.Text = Convert.ToString(row.Cells["Tên sản phẩm"].Value);
                 txtProductNumber.Text = "1";
-                cbFeatureName.Text = Convert.ToString(row.Cells["FeatureName"].Value);
-                lblProductNo.Text = Convert.ToString(row.Cells["ProductNo"].Value);
+                //cbFeatureName.Text = Convert.ToString(row.Cells["FeatureName"].Value);
+                lblProductNo.Text = Convert.ToString(row.Cells["Mã sản phẩm"].Value);
                 txtProductName.ForeColor = Color.Black;
             }
         }
@@ -191,7 +191,7 @@ namespace Project_1
         {
             LoadCategoryName();
             LoadFeatureName();
-            ShowDataProduct();
+            ShowDataPayment();
             txtCustomerPhone.Text = "Nhập vào số điện thoại";
             txtProductName.Text = "Tên sản phẩm";
             txtProductNumber.Text = "Số lượng";
@@ -200,16 +200,17 @@ namespace Project_1
             btnCancel.BackColor = Color.Gray;
         }
 
-        private void picFilterProductName_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
             if (txtProductName.Text != "" && txtProductName.Text != "Tên sản phẩm")
             {
-                string rowFilter = string.Format("{0} like '{1}'", "ProductName", "*" + txtProductName.Text + "*");
-                (dgvShowDataProduct.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.SearchDataPayment = txtProductName.Text;
+                dgvShowDataPayment.DataSource = productBLL.SearchDataPaymentBLL(productDTO);
             }
             else
             {
-                ShowDataProduct();
+                MessageBox.Show("Vui lòng nhập dữ liệu tìm kiếm", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
             }
         }
 
@@ -237,9 +238,10 @@ namespace Project_1
                     dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count-1].Selected = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm muốn thêm vào hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Vui lòng chọn sản phẩm muốn thêm vào hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }            
         }
         private decimal sum = 0;
@@ -305,6 +307,7 @@ namespace Project_1
                 invoiceDTO.InvoiceDateTime = DateTime.Now;
                 invoiceDTO.CustomerId = customerBLL.GetCustomerIdBLL(customerDTO);
                 invoiceDTO.StaffId = FormLogIn.StaffNoLogIn;
+                invoiceDTO.PaymentMethod = "Tiền mặt";
                
                 if (invoiceBLL.CreateInvoiceBLL(invoiceDTO))
                 {
@@ -325,5 +328,6 @@ namespace Project_1
                 }
             }
         }
+
     }
 }
