@@ -14,6 +14,7 @@ namespace DataTransferObject
         public FeatureByProductDTO() { }
 
         public string ProductId { get => _ProductId; set => _ProductId = value; }
+        public int FeatureIdChange { get; set; }
         public int FeatureId { get => _FeatureId; set => _FeatureId = value; }
         public string FeatureValue { get => _FeatureValue; set => _FeatureValue=value; }
     }

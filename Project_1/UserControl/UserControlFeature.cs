@@ -44,7 +44,7 @@ namespace Project_1
             if (txtFeatureId.Text == "")
             {
                 txtFeatureId.Text = "Thêm mới không cần nhập";
-                txtFeatureId.ForeColor = Color.LightGray;
+                txtFeatureId.ForeColor = Color.Gray;
             }
         }
         private void txtSearchFollowFeatureName_Enter(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Project_1
             if (txtSearchFollowFeatureName.Text == "")
             {
                 txtSearchFollowFeatureName.Text = "Tìm kiếm theo tên đặc tính";
-                txtSearchFollowFeatureName.ForeColor = Color.LightGray;
+                txtSearchFollowFeatureName.ForeColor = Color.Gray;
             }
         }
 

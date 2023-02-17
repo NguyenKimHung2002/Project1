@@ -29,23 +29,25 @@ namespace Project_1
         {
             Reset();
             ShowDataProduct();
-            
         }
         private void ShowDataProduct()
         {
             dgvShowDataProduct.DataSource = productBLL.GetDataProductBLL();
-            dgvShowDataProduct.Columns[6].Width = 500;
+            dgvShowDataProduct.Columns[6].Width = 300;
         }
         private void ShowFeatureByProduct()
         {
-            //dgvShowStickers.DataSource = featureByProductBLL.GetFeatureByProductBLL(featureByProductDTO);
-            dgvShowStickers.Columns[0].Width = 150;
+            cbFeatureName.Text = "Tất cả";
+            txtFeatureValue.Text = "";
+            featureByProductDTO.ProductId = txtProductId.Text;
+            dgvShowStickers.DataSource = featureByProductBLL.GetFeatureByProductBLL(featureByProductDTO);
+            dgvShowStickers.Columns[0].Width = 120;
             dgvShowStickers.Columns[1].Width = 150;
         }
         private void Reset()
         {
             txtProductId.Text = "Nhập mã sản phẩm";
-            txtProductId.ForeColor = Color.LightGray;
+            txtProductId.ForeColor = Color.Gray;
             txtProductName.Text = "";
             txtImportPrice.Text = "";
             txtExportPrice.Text = "";
@@ -53,7 +55,7 @@ namespace Project_1
             txtProductUnit.Text = "";
             txtProductDescription.Text = "";
             txtSearchProduct.Text = "Tìm kiếm sản phẩm";
-            txtSearchProduct.ForeColor = Color.LightGray;
+            txtSearchProduct.ForeColor = Color.Gray;
             DataTable dt = featureBLL.GetFeatureNameBLL();
             DataRow dr = dt.NewRow();
             dr["Mã đặc tính"] = "-1";
@@ -63,6 +65,7 @@ namespace Project_1
             cbFeatureName.DisplayMember = "Đặc tính nổi bật";
             cbFeatureName.ValueMember = "Đặc tính";
             cbFeatureName.SelectedIndex = cbFeatureName.Items.Count - 1;
+            txtFeatureValue.Text = "";
         }
         private void txtProductId_Enter(object sender, EventArgs e)
         {
@@ -78,7 +81,7 @@ namespace Project_1
             if(txtProductId.Text == "")
             {
                 txtProductId.Text = "Nhập mã sản phẩm";
-                txtProductId.ForeColor = Color.LightGray;
+                txtProductId.ForeColor = Color.Gray;
             }
         }
 
@@ -96,7 +99,7 @@ namespace Project_1
             if(txtSearchProduct.Text == "")
             {
                 txtSearchProduct.Text = "Tìm kiếm sản phẩm";
-                txtSearchProduct.ForeColor = Color.LightGray;
+                txtSearchProduct.ForeColor = Color.Gray;
             }
         }
 
@@ -199,22 +202,6 @@ namespace Project_1
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void txtProductId_TextChanged(object sender, EventArgs e)
-        {
-            /*productDTO.ProductId = txtProductId.Text;
-            try
-            {
-                if (productBLL.CheckExistsProductIdBLL(productDTO) == 1)
-                {
-                    ShowFeatureByProduct();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
-        }
         private void btnAddSticker_Click(object sender, EventArgs e)
         {
             featureByProductDTO.ProductId = txtProductId.Text;
@@ -249,6 +236,8 @@ namespace Project_1
         private void UpdateSticker_Click(object sender, EventArgs e)
         {
             featureByProductDTO.ProductId = txtProductId.Text;
+            featureDTO.FeatureName = FeatureNameChange;
+            featureByProductDTO.FeatureIdChange = featureBLL.GetFeatureIdByFeatureNameBLL(featureDTO);
             featureDTO.FeatureName = cbFeatureName.Text;
             featureByProductDTO.FeatureId = featureBLL.GetFeatureIdByFeatureNameBLL(featureDTO);
             featureByProductDTO.FeatureValue = txtFeatureValue.Text;
@@ -286,7 +275,7 @@ namespace Project_1
             {
                 if (txtProductId.Text != "" && cbFeatureName.Text != "Tất cả" && txtFeatureValue.Text != "")
                 {
-                    if (featureByProductBLL.UpdateFeatureByProductBLL(featureByProductDTO) == true)
+                    if (featureByProductBLL.DeleteFeatureByProductBLL(featureByProductDTO) == true)
                     {
                         MessageBox.Show("Gỡ nhãn dán thành công.");
                         ShowFeatureByProduct();
@@ -310,7 +299,7 @@ namespace Project_1
         {
             Reset();
         }
-
+        public static string FeatureNameChange { get; set; }
         private void dgvShowDataProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = new DataGridViewRow();
@@ -324,6 +313,10 @@ namespace Project_1
                 txtImportPrice.Text = Convert.ToString(row.Cells["Giá nhập"].Value);
                 txtExportPrice.Text = Convert.ToString(row.Cells["Giá xuất"].Value);
                 txtProductDescription.Text = Convert.ToString(row.Cells["Mô tả"].Value);
+                txtFeatureValue.Text = "";
+                cbFeatureName.Text = "Tất cả";
+                ShowFeatureByProduct();
+
             }
         }
 
@@ -335,6 +328,21 @@ namespace Project_1
                 row = dgvShowStickers.Rows[e.RowIndex];
                 cbFeatureName.Text = Convert.ToString(row.Cells["Tên đặc tính"].Value);
                 txtFeatureValue.Text = Convert.ToString(row.Cells["Giá trị tương đối"].Value);
+                FeatureNameChange = cbFeatureName.Text;
+            }
+        }
+
+        private void txtSearchProduct_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearchProduct.Text != "" && txtSearchProduct.Text != "Tìm kiếm sản phẩm")
+            {
+                productDTO.SearchDataProduct = txtSearchProduct.Text;
+                DataTable dt = productBLL.SearchDataProductBLL(productDTO);
+                dgvShowDataProduct.DataSource = dt;
+            }
+            else
+            {
+                ShowDataProduct();
             }
         }
     }

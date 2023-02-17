@@ -53,20 +53,24 @@
             // 
             this.dgvShowDataCustomer.BackgroundColor = System.Drawing.Color.White;
             this.dgvShowDataCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowDataCustomer.Location = new System.Drawing.Point(380, 65);
+            this.dgvShowDataCustomer.Location = new System.Drawing.Point(507, 80);
+            this.dgvShowDataCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.dgvShowDataCustomer.Name = "dgvShowDataCustomer";
-            this.dgvShowDataCustomer.Size = new System.Drawing.Size(379, 220);
+            this.dgvShowDataCustomer.RowHeadersWidth = 51;
+            this.dgvShowDataCustomer.Size = new System.Drawing.Size(505, 271);
             this.dgvShowDataCustomer.TabIndex = 11;
+            this.dgvShowDataCustomer.TabStop = false;
             this.dgvShowDataCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataCustomer_CellClick);
             // 
             // btnCreateNewCustomer
             // 
             this.btnCreateNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateNewCustomer.Image")));
             this.btnCreateNewCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateNewCustomer.Location = new System.Drawing.Point(36, 250);
+            this.btnCreateNewCustomer.Location = new System.Drawing.Point(48, 308);
+            this.btnCreateNewCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateNewCustomer.Name = "btnCreateNewCustomer";
-            this.btnCreateNewCustomer.Size = new System.Drawing.Size(95, 35);
-            this.btnCreateNewCustomer.TabIndex = 0;
+            this.btnCreateNewCustomer.Size = new System.Drawing.Size(127, 43);
+            this.btnCreateNewCustomer.TabIndex = 4;
             this.btnCreateNewCustomer.Text = "Thêm mới";
             this.btnCreateNewCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreateNewCustomer.UseVisualStyleBackColor = true;
@@ -76,10 +80,11 @@
             // 
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(158, 250);
+            this.btnUpdate.Location = new System.Drawing.Point(211, 308);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(96, 35);
-            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Size = new System.Drawing.Size(128, 43);
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -89,10 +94,11 @@
             // 
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(280, 250);
+            this.btnDelete.Location = new System.Drawing.Point(373, 308);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(76, 35);
-            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Size = new System.Drawing.Size(101, 43);
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -100,33 +106,37 @@
             // 
             // txtCustomerPhone
             // 
-            this.txtCustomerPhone.Location = new System.Drawing.Point(126, 86);
+            this.txtCustomerPhone.Location = new System.Drawing.Point(168, 106);
+            this.txtCustomerPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerPhone.Name = "txtCustomerPhone";
-            this.txtCustomerPhone.Size = new System.Drawing.Size(160, 20);
-            this.txtCustomerPhone.TabIndex = 19;
+            this.txtCustomerPhone.Size = new System.Drawing.Size(212, 22);
+            this.txtCustomerPhone.TabIndex = 3;
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(126, 53);
+            this.txtCustomerName.Location = new System.Drawing.Point(168, 65);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(160, 20);
-            this.txtCustomerName.TabIndex = 18;
+            this.txtCustomerName.Size = new System.Drawing.Size(212, 22);
+            this.txtCustomerName.TabIndex = 2;
             // 
             // lblCustommerPhone
             // 
             this.lblCustommerPhone.AutoSize = true;
-            this.lblCustommerPhone.Location = new System.Drawing.Point(17, 89);
+            this.lblCustommerPhone.Location = new System.Drawing.Point(23, 110);
+            this.lblCustommerPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustommerPhone.Name = "lblCustommerPhone";
-            this.lblCustommerPhone.Size = new System.Drawing.Size(73, 13);
+            this.lblCustommerPhone.Size = new System.Drawing.Size(88, 16);
             this.lblCustommerPhone.TabIndex = 17;
             this.lblCustommerPhone.Text = "Số điện thoại:";
             // 
             // lblCustommerName
             // 
             this.lblCustommerName.AutoSize = true;
-            this.lblCustommerName.Location = new System.Drawing.Point(17, 56);
+            this.lblCustommerName.Location = new System.Drawing.Point(23, 69);
+            this.lblCustommerName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustommerName.Name = "lblCustommerName";
-            this.lblCustommerName.Size = new System.Drawing.Size(57, 13);
+            this.lblCustommerName.Size = new System.Drawing.Size(67, 16);
             this.lblCustommerName.TabIndex = 16;
             this.lblCustommerName.Text = "Họ và tên:";
             // 
@@ -137,17 +147,19 @@
             this.panel7.Controls.Add(this.pictureBox2);
             this.panel7.Controls.Add(this.txtSearchFollowCustomerName);
             this.panel7.ForeColor = System.Drawing.Color.Black;
-            this.panel7.Location = new System.Drawing.Point(380, 37);
+            this.panel7.Location = new System.Drawing.Point(507, 46);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(193, 22);
+            this.panel7.Size = new System.Drawing.Size(257, 27);
             this.panel7.TabIndex = 78;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(168, -1);
+            this.pictureBox2.Location = new System.Drawing.Point(224, -1);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 22);
+            this.pictureBox2.Size = new System.Drawing.Size(32, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 61;
             this.pictureBox2.TabStop = false;
@@ -157,11 +169,12 @@
             this.txtSearchFollowCustomerName.BackColor = System.Drawing.Color.White;
             this.txtSearchFollowCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchFollowCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchFollowCustomerName.ForeColor = System.Drawing.Color.LightGray;
-            this.txtSearchFollowCustomerName.Location = new System.Drawing.Point(3, 4);
+            this.txtSearchFollowCustomerName.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearchFollowCustomerName.Location = new System.Drawing.Point(4, 5);
+            this.txtSearchFollowCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchFollowCustomerName.Name = "txtSearchFollowCustomerName";
-            this.txtSearchFollowCustomerName.Size = new System.Drawing.Size(167, 13);
-            this.txtSearchFollowCustomerName.TabIndex = 0;
+            this.txtSearchFollowCustomerName.Size = new System.Drawing.Size(223, 16);
+            this.txtSearchFollowCustomerName.TabIndex = 7;
             this.txtSearchFollowCustomerName.TextChanged += new System.EventHandler(this.txtSearchFollowCustomerName_TextChanged);
             this.txtSearchFollowCustomerName.Enter += new System.EventHandler(this.txtFindFollowName_Enter);
             this.txtSearchFollowCustomerName.Leave += new System.EventHandler(this.txtFindFollowName_Leave);
@@ -174,35 +187,39 @@
             this.groupBox1.Controls.Add(this.lblCustommerName);
             this.groupBox1.Controls.Add(this.txtCustomerPhone);
             this.groupBox1.Controls.Add(this.lblCustommerPhone);
-            this.groupBox1.Location = new System.Drawing.Point(36, 37);
+            this.groupBox1.Location = new System.Drawing.Point(48, 46);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 130);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(427, 160);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin khách hàng";
             // 
             // txtCustomerId
             // 
-            this.txtCustomerId.ForeColor = System.Drawing.Color.LightGray;
-            this.txtCustomerId.Location = new System.Drawing.Point(126, 21);
+            this.txtCustomerId.ForeColor = System.Drawing.Color.Gray;
+            this.txtCustomerId.Location = new System.Drawing.Point(168, 26);
+            this.txtCustomerId.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerId.Name = "txtCustomerId";
-            this.txtCustomerId.Size = new System.Drawing.Size(160, 20);
-            this.txtCustomerId.TabIndex = 81;
+            this.txtCustomerId.Size = new System.Drawing.Size(212, 22);
+            this.txtCustomerId.TabIndex = 1;
             this.txtCustomerId.Enter += new System.EventHandler(this.txtCustomerId_Enter);
             this.txtCustomerId.Leave += new System.EventHandler(this.txtCustomerId_Leave);
             // 
             // lblCustommerNo
             // 
             this.lblCustommerNo.AutoSize = true;
-            this.lblCustommerNo.Location = new System.Drawing.Point(17, 24);
+            this.lblCustommerNo.Location = new System.Drawing.Point(23, 30);
+            this.lblCustommerNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustommerNo.Name = "lblCustommerNo";
-            this.lblCustommerNo.Size = new System.Drawing.Size(99, 13);
+            this.lblCustommerNo.Size = new System.Drawing.Size(119, 16);
             this.lblCustommerNo.TabIndex = 80;
             this.lblCustommerNo.Text = "Mã số khách hàng:";
             // 
             // UserControlCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.groupBox1);
@@ -211,8 +228,9 @@
             this.Controls.Add(this.dgvShowDataCustomer);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCreateNewCustomer);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlCustomer";
-            this.Size = new System.Drawing.Size(820, 480);
+            this.Size = new System.Drawing.Size(1093, 591);
             this.Load += new System.EventHandler(this.UserControlForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowDataCustomer)).EndInit();
             this.panel7.ResumeLayout(false);

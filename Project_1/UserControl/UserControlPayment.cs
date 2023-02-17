@@ -16,12 +16,20 @@ namespace Project_1
     {
         StaffBLL staffBLL = new StaffBLL();
         CustomerBLL customerBLL = new CustomerBLL();
+        CustomerDTO customerDTO = new CustomerDTO();
         ProductBLL productBLL = new ProductBLL();
+        ProductDTO productDTO = new ProductDTO();
         CategoryBLL categoryBLL = new CategoryBLL();
         FeatureBLL featureBLL = new FeatureBLL();
+        FeatureDTO featureDTO = new FeatureDTO();
         InvoiceBLL invoiceBLL = new InvoiceBLL();
         InvoiceDetailBLL invoiceDetailBLL = new InvoiceDetailBLL();
+        private int pageSize = 10;
+        private int pageIndex;
+        private int totalRecords;
+        private int totalPages;
         public decimal totalMoney;
+        private bool isSearched;
         public UserControlPayment()
         {
             InitializeComponent();           
@@ -29,51 +37,48 @@ namespace Project_1
         private void UserControlPayment_Load(object sender, EventArgs e)
         {
             Reset();
-        }
-        private void LoadCategoryName()
-        {
-            DataTable dt = categoryBLL.GetCategoryNameBLL();
-            DataRow dr = dt.NewRow();
-            dr["Tên Loại SP"] = "Tất cả";
-            dt.Rows.Add(dr);
-            cbCategoryName.DataSource = dt;
-            cbCategoryName.DisplayMember = "Tên Loại SP";
-            cbCategoryName.SelectedIndex = cbCategoryName.Items.Count - 1;
-        }
-        private void LoadFeatureName()
-        {
-            DataTable dt = featureBLL.GetFeatureNameBLL();
-            DataRow dr = dt.NewRow();
-            dr["Mã đặc tính"] = "-1";
-            dr["Đặc tính"] = "Tất cả";
-            dt.Rows.Add(dr);
-            cbFeatureName.DataSource = dt;
-            cbFeatureName.DisplayMember = "Đặc tính nổi bật";
-            cbFeatureName.ValueMember = "Đặc tính";
-            cbFeatureName.SelectedIndex = cbFeatureName.Items.Count - 1;
+            txtCustomerPhone.Text = "Nhập vào số điện thoại";
         }
         private void ShowDataPayment()
         {
-            dgvShowDataPayment.DataSource = productBLL.GetDataPaymentBLL();
-        }
-        private void PhoneText_Enter(object sender, EventArgs e)
-        {
-            if (txtCustomerPhone.Text == "Nhập vào số điện thoại")
+            lblPageNumber.Text = pageIndex + "/" + totalPages;
+            productDTO.PageSize = pageSize;
+            productDTO.PageIndex = pageIndex;
+            if(isSearched)
             {
-                txtCustomerPhone.Text = "";
-                txtCustomerPhone.ForeColor = Color.Black;
+                productDTO.SearchDataPayment = txtSearchDataPayment.Text;
+                dgvShowDataPayment.DataSource = productBLL.SearchDataPaymentBLL(productDTO);
+            }
+            else
+            {
+                if (picSuccess.Visible)
+                {
+
+                    customerDTO.CustomerPhone = txtCustomerPhone.Text;
+                    dgvShowDataPayment.DataSource = productBLL.GetSortedDataPaymentBLL(productDTO, customerDTO);
+                }
+                else
+                {
+                    dgvShowDataPayment.DataSource = productBLL.GetDataPaymentBLL(productDTO);
+                }
             }
         }
-
-        private void PhoneText_Leave(object sender, EventArgs e)
+        private void btnPre_Click(object sender, EventArgs e)
         {
-            if (txtCustomerPhone.Text == "")
+            if(pageIndex > 1)
             {
-                txtCustomerPhone.Text = "Nhập vào số điện thoại";
-                txtCustomerPhone.ForeColor = Color.LightGray;
+                pageIndex--;
+                ShowDataPayment();
             }
         }
-
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(pageIndex < totalPages)
+            {
+                pageIndex++;
+                ShowDataPayment();
+            }
+        }
         private void txtCustommerPhone_Enter(object sender, EventArgs e)
         {
             if(txtCustomerPhone.Text == "Nhập vào số điện thoại")
@@ -88,24 +93,25 @@ namespace Project_1
             if(txtCustomerPhone.Text == "")
             {
                 txtCustomerPhone.Text = "Nhập vào số điện thoại";
-                txtCustomerPhone.ForeColor = Color.LightGray;
+                txtCustomerPhone.ForeColor = Color.Gray;
             }
         }
-        private void txtProductName_Enter(object sender, EventArgs e)
+        private void txtSearchDataPayment_Enter(object sender, EventArgs e)
         {
-            if (txtProductName.Text == "Tên sản phẩm")
+            if (txtSearchDataPayment.Text == "Tìm kiếm (theo ID, tên SP)")
             {
-                txtProductName.Text = "";
-                txtProductName.ForeColor = Color.Black;
+                txtSearchDataPayment.Text = "";
+                txtSearchDataPayment.ForeColor = Color.Black;
             }
         }
 
-        private void txtProductName_Leave(object sender, EventArgs e)
+        private void txtSearchDataPayment_Leave(object sender, EventArgs e)
         {
-            if(txtProductName.Text == "")
+
+            if (txtSearchDataPayment.Text == "")
             {
-                txtProductName.Text = "Tên sản phẩm";
-                txtProductName.ForeColor = Color.LightGray;
+                txtSearchDataPayment.Text = "Tìm kiếm (theo ID, tên SP)";
+                txtSearchDataPayment.ForeColor = Color.Gray;
             }
         }
         private void txtProductNumber_Enter(object sender, EventArgs e)
@@ -144,7 +150,6 @@ namespace Project_1
         }
         private void txtCustommerPhone_TextChanged(object sender, EventArgs e)
         {
-            CustomerDTO customerDTO = new CustomerDTO();
             if (txtCustomerPhone.Text != "" || txtCustomerPhone.Text != "Nhập vào số điện thoại")
             {
                 customerDTO.CustomerPhone = txtCustomerPhone.Text;
@@ -158,6 +163,7 @@ namespace Project_1
                 {
                     picSuccess.Visible = true;
                     txtCustomerName.Text = dt.Rows[0][0].ToString();
+                    ShowDataPayment();
                 }
             }
             else
@@ -171,67 +177,56 @@ namespace Project_1
             if (e.RowIndex != -1)
             {
                 row = dgvShowDataPayment.Rows[e.RowIndex];
-                txtProductName.Text = Convert.ToString(row.Cells["Tên sản phẩm"].Value);
                 txtProductNumber.Text = "1";
                 //cbFeatureName.Text = Convert.ToString(row.Cells["FeatureName"].Value);
-                lblProductNo.Text = Convert.ToString(row.Cells["Mã sản phẩm"].Value);
-                txtProductName.ForeColor = Color.Black;
+                lblProductId.Text = Convert.ToString(row.Cells["Mã sản phẩm"].Value);
             }
         }
 
-        private void btnResetFilter_Click(object sender, EventArgs e)
-        {
-            Reset();
-            txtCustomerPhone.ForeColor = Color.LightGray;
-            txtProductName.ForeColor = Color.LightGray;
-            txtProductNumber.ForeColor = Color.Gray;
-            txtMonneyCustommerPay.ForeColor = Color.Gray;
-        }
         private void Reset()
         {
-            LoadCategoryName();
-            LoadFeatureName();
+            pageIndex = 1;
+            totalRecords = productBLL.GetTotalDataProductBLL();
+            totalPages = totalRecords / pageSize + 1;
             ShowDataPayment();
-            txtCustomerPhone.Text = "Nhập vào số điện thoại";
-            txtProductName.Text = "Tên sản phẩm";
+            txtSearchDataPayment.Text = "Tìm kiếm (theo ID, tên SP)";
             txtProductNumber.Text = "Số lượng";
             txtMonneyCustommerPay.Text = "Nhập và nhấn Enter";
+            productDTO.ProductId = "";
+            var dt = productBLL.GetSuggestionsBLL(productDTO);
+            dgvSuggestions.DataSource = dt;
+            txtSearchDataPayment.ForeColor = Color.Gray;
             btnPayment.BackColor = Color.Gray;
             btnCancel.BackColor = Color.Gray;
-        }
-
-        private void btnApply_Click(object sender, EventArgs e)
-        {
-            if (txtProductName.Text != "" && txtProductName.Text != "Tên sản phẩm")
-            {
-                ProductDTO productDTO = new ProductDTO();
-                productDTO.SearchDataPayment = txtProductName.Text;
-                dgvShowDataPayment.DataSource = productBLL.SearchDataPaymentBLL(productDTO);
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập dữ liệu tìm kiếm", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-            }
         }
 
         private void btnAddToInvoice_Click(object sender, EventArgs e)
         {
             ProductDTO productDTO = new ProductDTO();
-            productDTO.ProductId = lblProductNo.Text;
+            productDTO.ProductId = lblProductId.Text;
             DataTable dt = productBLL.AddInvoiceDetailBLL(productDTO);
             try
             {
-                if (txtProductNumber.Text != "1" && txtProductNumber.Text != "Số lượng")
+                if (txtProductNumber.Text != "Số lượng")
                 {
                     int intoMoney = Convert.ToInt32(dt.Rows[0].ItemArray[1]) * Convert.ToInt32(txtProductNumber.Text);
-                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), "-", "+");
+                    DataGridViewRow r = checkExistInvoice(productDTO.ProductId);
+                    if (r != null)
+                    {
+                        var unitPrice = Convert.ToInt32(r.Cells[2].Value);
+                        var number = Convert.ToInt32(r.Cells[4].Value);
+                        number = number + Convert.ToInt32(txtProductNumber.Text);
+                        r.Cells[4].Value = number;
+                        r.Cells[5].Value = number * unitPrice;
+                        dgvInvoiceDetail.Refresh();
+                    }
+                    else dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), " + ", " - ", " x ");
                 }
-                else
+                else 
                 {
-                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], "-", "+");
+                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], " + ", " - ", " x ");
                 }        
                 LoadSumInvoice();
-                sum = 0;
                 if (dgvInvoiceDetail.Rows.Count >= 2)
                 {
                     dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count-2].Selected = false;
@@ -244,10 +239,21 @@ namespace Project_1
                 //MessageBox.Show("Vui lòng chọn sản phẩm muốn thêm vào hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }            
         }
-        private decimal sum = 0;
+        private DataGridViewRow checkExistInvoice(string productID)
+        {
+            foreach(DataGridViewRow row in dgvInvoiceDetail.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == productID)
+                {
+                    return row;
+                }
+            }
+            return null;
+        }
         private void LoadSumInvoice()
         {
-            for(int i=0; i<dgvInvoiceDetail.Rows.Count; i++)
+            decimal sum = 0;
+            for (int i = 0; i<dgvInvoiceDetail.Rows.Count; i++)
             {
                 sum += decimal.Parse(dgvInvoiceDetail.Rows[i].Cells[5].Value.ToString());
             }
@@ -264,7 +270,7 @@ namespace Project_1
             if (e.KeyCode == Keys.Enter)
             {
                 totalMoney = Convert.ToInt32(lblSumMoney.Text.Substring(0, lblSumMoney.Text.Length-2));
-                if (totalMoney < decimal.Parse(txtMonneyCustommerPay.Text))
+                if (totalMoney <= decimal.Parse(txtMonneyCustommerPay.Text))
                 {
                     txtExcessMoneyReturned.Text = Convert.ToDecimal((Math.Abs(totalMoney - decimal.Parse(txtMonneyCustommerPay.Text)))) + "";
                     btnPayment.BackColor = Color.Green;
@@ -285,9 +291,9 @@ namespace Project_1
                 lblSumMoney.Text = "0";
                 txtExcessMoneyReturned.Text = "";
                 Reset();
-                sum = 0;
-                txtCustomerPhone.ForeColor = Color.LightGray;
-                txtProductName.ForeColor = Color.LightGray;
+                lblProductId.Text = "Sản phẩm";
+                txtCustomerPhone.Text = "Nhập vào số điện thoại";
+                txtCustomerPhone.ForeColor = Color.Gray;
                 txtProductNumber.ForeColor = Color.Gray;
                 txtMonneyCustommerPay.ForeColor = Color.Gray;
             }            
@@ -325,9 +331,108 @@ namespace Project_1
                         }
                     }
                     MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvInvoiceDetail.Rows.Clear();
+                    lblSumMoney.Text = "0";
+                    txtExcessMoneyReturned.Text = "";
+                    Reset();
+                    txtCustomerPhone.Text = "Nhập vào số điện thoại";
+                    txtCustomerPhone.ForeColor = Color.Gray;
+                    txtProductNumber.ForeColor = Color.Gray;
+                    txtMonneyCustommerPay.ForeColor = Color.Gray;
                 }
             }
         }
 
+        private void btnIncrease_Click(object sender, EventArgs e)
+        {
+            if(int.TryParse(txtProductNumber.Text, out int productNumber))
+            {
+                productNumber++;
+                txtProductNumber.Text = productNumber.ToString();
+            }
+        }
+
+        private void btnDecrease_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtProductNumber.Text, out int productNumber))
+            {
+                if(productNumber > 1)
+                {
+                    productNumber--;
+                    txtProductNumber.Text = productNumber.ToString();
+                }
+            }
+        }
+
+        private void dgvInvoiceDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = dgvInvoiceDetail.CurrentCell;
+            if(cell.Value.ToString() == " + ")
+            {
+                DataGridViewRow row = cell.OwningRow;
+                var unitPrice = Convert.ToInt32(row.Cells[2].Value);
+                var number = Convert.ToInt32(row.Cells[4].Value);
+                number++;
+                row.Cells[4].Value = number;
+                row.Cells[5].Value = number * unitPrice;
+                dgvInvoiceDetail.Refresh();
+            }
+            else if(cell.Value.ToString() == " - ")
+            {
+                DataGridViewRow row = cell.OwningRow;
+                var unitPrice = Convert.ToInt32(row.Cells[2].Value);
+                var number = Convert.ToInt32(row.Cells[4].Value);
+                number--;
+                if(number > 0)
+                {
+                    row.Cells[4].Value = number;
+                    row.Cells[5].Value = number * unitPrice;
+                }
+                else
+                {
+                    dgvInvoiceDetail.Rows.Remove(row);
+                }
+                dgvInvoiceDetail.Refresh();
+            }
+            else if (cell.Value.ToString() == " x ")
+            {
+                DataGridViewRow row = cell.OwningRow;
+                dgvInvoiceDetail.Rows.Remove(row);
+                dgvInvoiceDetail.Refresh();
+            }
+            else if(e.RowIndex != -1)
+            {
+                DataGridViewRow row = cell.OwningRow;
+                productDTO.ProductId = row.Cells[0].Value.ToString();
+                var dt = productBLL.GetSuggestionsBLL(productDTO);
+                dgvSuggestions.DataSource = dt;
+            }
+            LoadSumInvoice();
+        }
+
+        private void txtSearchDataPayment_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchDataPayment.Text != "" && txtSearchDataPayment.Text != "Tìm kiếm (theo ID, tên SP)")
+            {
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.PageIndex = pageIndex;
+                productDTO.PageSize = pageSize;
+                productDTO.SearchDataPayment = txtSearchDataPayment.Text;
+                isSearched = true;
+                pageIndex = 1;
+                totalRecords = productBLL.GetTotalSearchProductBLL(productDTO);
+                totalPages = totalRecords / pageSize + 1;
+                //dgvShowDataPayment.DataSource = productBLL.SearchDataPaymentBLL(productDTO);
+                ShowDataPayment();
+            }
+            else
+            {
+                isSearched = false;
+                pageIndex = 1;
+                totalRecords = productBLL.GetTotalDataProductBLL();
+                totalPages = totalRecords / pageSize + 1;
+                ShowDataPayment();
+            }
+        }
     }
 }

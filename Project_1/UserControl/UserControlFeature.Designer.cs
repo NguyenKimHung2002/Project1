@@ -51,53 +51,59 @@
             // 
             // txtFeatureDescription
             // 
-            this.txtFeatureDescription.Location = new System.Drawing.Point(99, 88);
+            this.txtFeatureDescription.Location = new System.Drawing.Point(132, 108);
+            this.txtFeatureDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtFeatureDescription.Multiline = true;
             this.txtFeatureDescription.Name = "txtFeatureDescription";
-            this.txtFeatureDescription.Size = new System.Drawing.Size(160, 91);
-            this.txtFeatureDescription.TabIndex = 89;
+            this.txtFeatureDescription.Size = new System.Drawing.Size(212, 111);
+            this.txtFeatureDescription.TabIndex = 3;
             // 
             // lblFeatureDescription
             // 
             this.lblFeatureDescription.AutoSize = true;
-            this.lblFeatureDescription.Location = new System.Drawing.Point(6, 91);
+            this.lblFeatureDescription.Location = new System.Drawing.Point(8, 112);
+            this.lblFeatureDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFeatureDescription.Name = "lblFeatureDescription";
-            this.lblFeatureDescription.Size = new System.Drawing.Size(81, 13);
+            this.lblFeatureDescription.Size = new System.Drawing.Size(92, 16);
             this.lblFeatureDescription.TabIndex = 88;
             this.lblFeatureDescription.Text = "Mô tả đặc tính:";
             // 
             // txtFeatureId
             // 
-            this.txtFeatureId.ForeColor = System.Drawing.Color.LightGray;
-            this.txtFeatureId.Location = new System.Drawing.Point(99, 21);
+            this.txtFeatureId.ForeColor = System.Drawing.Color.Gray;
+            this.txtFeatureId.Location = new System.Drawing.Point(132, 26);
+            this.txtFeatureId.Margin = new System.Windows.Forms.Padding(4);
             this.txtFeatureId.Name = "txtFeatureId";
-            this.txtFeatureId.Size = new System.Drawing.Size(160, 20);
-            this.txtFeatureId.TabIndex = 81;
+            this.txtFeatureId.Size = new System.Drawing.Size(212, 22);
+            this.txtFeatureId.TabIndex = 1;
             this.txtFeatureId.Enter += new System.EventHandler(this.txtFeatureId_Enter);
             this.txtFeatureId.Leave += new System.EventHandler(this.txtFeatureId_Leave);
             // 
             // lblFeatureId
             // 
             this.lblFeatureId.AutoSize = true;
-            this.lblFeatureId.Location = new System.Drawing.Point(6, 24);
+            this.lblFeatureId.Location = new System.Drawing.Point(8, 30);
+            this.lblFeatureId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFeatureId.Name = "lblFeatureId";
-            this.lblFeatureId.Size = new System.Drawing.Size(69, 13);
+            this.lblFeatureId.Size = new System.Drawing.Size(78, 16);
             this.lblFeatureId.TabIndex = 80;
             this.lblFeatureId.Text = "Mã đặc tính:";
             // 
             // txtFeatureName
             // 
-            this.txtFeatureName.Location = new System.Drawing.Point(99, 53);
+            this.txtFeatureName.Location = new System.Drawing.Point(132, 65);
+            this.txtFeatureName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFeatureName.Name = "txtFeatureName";
-            this.txtFeatureName.Size = new System.Drawing.Size(160, 20);
-            this.txtFeatureName.TabIndex = 18;
+            this.txtFeatureName.Size = new System.Drawing.Size(212, 22);
+            this.txtFeatureName.TabIndex = 2;
             // 
             // lblFeatureName
             // 
             this.lblFeatureName.AutoSize = true;
-            this.lblFeatureName.Location = new System.Drawing.Point(6, 56);
+            this.lblFeatureName.Location = new System.Drawing.Point(8, 69);
+            this.lblFeatureName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFeatureName.Name = "lblFeatureName";
-            this.lblFeatureName.Size = new System.Drawing.Size(73, 13);
+            this.lblFeatureName.Size = new System.Drawing.Size(83, 16);
             this.lblFeatureName.TabIndex = 16;
             this.lblFeatureName.Text = "Tên đặc tính:";
             // 
@@ -109,9 +115,11 @@
             this.gbFeatureInformation.Controls.Add(this.lblFeatureId);
             this.gbFeatureInformation.Controls.Add(this.txtFeatureName);
             this.gbFeatureInformation.Controls.Add(this.lblFeatureName);
-            this.gbFeatureInformation.Location = new System.Drawing.Point(19, 38);
+            this.gbFeatureInformation.Location = new System.Drawing.Point(25, 47);
+            this.gbFeatureInformation.Margin = new System.Windows.Forms.Padding(4);
             this.gbFeatureInformation.Name = "gbFeatureInformation";
-            this.gbFeatureInformation.Size = new System.Drawing.Size(286, 193);
+            this.gbFeatureInformation.Padding = new System.Windows.Forms.Padding(4);
+            this.gbFeatureInformation.Size = new System.Drawing.Size(381, 238);
             this.gbFeatureInformation.TabIndex = 90;
             this.gbFeatureInformation.TabStop = false;
             this.gbFeatureInformation.Text = "Thông tin đặc tính";
@@ -120,10 +128,11 @@
             // 
             this.btnDeleteFeature.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteFeature.Image")));
             this.btnDeleteFeature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteFeature.Location = new System.Drawing.Point(231, 247);
+            this.btnDeleteFeature.Location = new System.Drawing.Point(308, 304);
+            this.btnDeleteFeature.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteFeature.Name = "btnDeleteFeature";
-            this.btnDeleteFeature.Size = new System.Drawing.Size(77, 34);
-            this.btnDeleteFeature.TabIndex = 89;
+            this.btnDeleteFeature.Size = new System.Drawing.Size(103, 42);
+            this.btnDeleteFeature.TabIndex = 6;
             this.btnDeleteFeature.Text = "         Xóa";
             this.btnDeleteFeature.UseVisualStyleBackColor = true;
             this.btnDeleteFeature.Click += new System.EventHandler(this.btnDeleteFeature_Click);
@@ -132,10 +141,11 @@
             // 
             this.btnUpdateFeature.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateFeature.Image")));
             this.btnUpdateFeature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateFeature.Location = new System.Drawing.Point(129, 247);
+            this.btnUpdateFeature.Location = new System.Drawing.Point(172, 304);
+            this.btnUpdateFeature.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateFeature.Name = "btnUpdateFeature";
-            this.btnUpdateFeature.Size = new System.Drawing.Size(87, 34);
-            this.btnUpdateFeature.TabIndex = 88;
+            this.btnUpdateFeature.Size = new System.Drawing.Size(116, 42);
+            this.btnUpdateFeature.TabIndex = 5;
             this.btnUpdateFeature.Text = "Cập nhật";
             this.btnUpdateFeature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateFeature.UseVisualStyleBackColor = true;
@@ -145,18 +155,22 @@
             // 
             this.dgvShowDataFeature.BackgroundColor = System.Drawing.Color.White;
             this.dgvShowDataFeature.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowDataFeature.Location = new System.Drawing.Point(330, 66);
+            this.dgvShowDataFeature.Location = new System.Drawing.Point(440, 81);
+            this.dgvShowDataFeature.Margin = new System.Windows.Forms.Padding(4);
             this.dgvShowDataFeature.Name = "dgvShowDataFeature";
-            this.dgvShowDataFeature.Size = new System.Drawing.Size(465, 326);
+            this.dgvShowDataFeature.RowHeadersWidth = 51;
+            this.dgvShowDataFeature.Size = new System.Drawing.Size(620, 401);
             this.dgvShowDataFeature.TabIndex = 85;
+            this.dgvShowDataFeature.TabStop = false;
             this.dgvShowDataFeature.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowDataFeature_CellClick);
             // 
             // picSearch
             // 
             this.picSearch.Image = ((System.Drawing.Image)(resources.GetObject("picSearch.Image")));
-            this.picSearch.Location = new System.Drawing.Point(275, -1);
+            this.picSearch.Location = new System.Drawing.Point(367, -1);
+            this.picSearch.Margin = new System.Windows.Forms.Padding(4);
             this.picSearch.Name = "picSearch";
-            this.picSearch.Size = new System.Drawing.Size(24, 22);
+            this.picSearch.Size = new System.Drawing.Size(32, 27);
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picSearch.TabIndex = 61;
             this.picSearch.TabStop = false;
@@ -166,11 +180,12 @@
             this.txtSearchFollowFeatureName.BackColor = System.Drawing.Color.White;
             this.txtSearchFollowFeatureName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchFollowFeatureName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchFollowFeatureName.ForeColor = System.Drawing.Color.LightGray;
-            this.txtSearchFollowFeatureName.Location = new System.Drawing.Point(3, 3);
+            this.txtSearchFollowFeatureName.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearchFollowFeatureName.Location = new System.Drawing.Point(4, 4);
+            this.txtSearchFollowFeatureName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchFollowFeatureName.Name = "txtSearchFollowFeatureName";
-            this.txtSearchFollowFeatureName.Size = new System.Drawing.Size(266, 13);
-            this.txtSearchFollowFeatureName.TabIndex = 0;
+            this.txtSearchFollowFeatureName.Size = new System.Drawing.Size(355, 16);
+            this.txtSearchFollowFeatureName.TabIndex = 7;
             this.txtSearchFollowFeatureName.TextChanged += new System.EventHandler(this.txtSearchFollowFeatureName_TextChanged);
             this.txtSearchFollowFeatureName.Enter += new System.EventHandler(this.txtSearchFollowFeatureName_Enter);
             this.txtSearchFollowFeatureName.Leave += new System.EventHandler(this.txtSearchFollowFeatureName_Leave);
@@ -179,10 +194,11 @@
             // 
             this.btnCreateNewFeature.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateNewFeature.Image")));
             this.btnCreateNewFeature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateNewFeature.Location = new System.Drawing.Point(22, 247);
+            this.btnCreateNewFeature.Location = new System.Drawing.Point(29, 304);
+            this.btnCreateNewFeature.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateNewFeature.Name = "btnCreateNewFeature";
-            this.btnCreateNewFeature.Size = new System.Drawing.Size(88, 34);
-            this.btnCreateNewFeature.TabIndex = 87;
+            this.btnCreateNewFeature.Size = new System.Drawing.Size(117, 42);
+            this.btnCreateNewFeature.TabIndex = 4;
             this.btnCreateNewFeature.Text = "Thêm mới";
             this.btnCreateNewFeature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreateNewFeature.UseVisualStyleBackColor = true;
@@ -195,14 +211,15 @@
             this.panelSearchFeature.Controls.Add(this.picSearch);
             this.panelSearchFeature.Controls.Add(this.txtSearchFollowFeatureName);
             this.panelSearchFeature.ForeColor = System.Drawing.Color.Black;
-            this.panelSearchFeature.Location = new System.Drawing.Point(330, 38);
+            this.panelSearchFeature.Location = new System.Drawing.Point(440, 47);
+            this.panelSearchFeature.Margin = new System.Windows.Forms.Padding(4);
             this.panelSearchFeature.Name = "panelSearchFeature";
-            this.panelSearchFeature.Size = new System.Drawing.Size(301, 22);
+            this.panelSearchFeature.Size = new System.Drawing.Size(401, 27);
             this.panelSearchFeature.TabIndex = 86;
             // 
             // UserControlFeature
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbFeatureInformation);
             this.Controls.Add(this.btnDeleteFeature);
@@ -210,8 +227,9 @@
             this.Controls.Add(this.dgvShowDataFeature);
             this.Controls.Add(this.btnCreateNewFeature);
             this.Controls.Add(this.panelSearchFeature);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlFeature";
-            this.Size = new System.Drawing.Size(820, 480);
+            this.Size = new System.Drawing.Size(1093, 591);
             this.Load += new System.EventHandler(this.UserControlFeature_Load);
             this.gbFeatureInformation.ResumeLayout(false);
             this.gbFeatureInformation.PerformLayout();

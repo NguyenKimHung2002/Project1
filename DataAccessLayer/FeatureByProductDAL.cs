@@ -13,15 +13,13 @@ namespace DataAccessLayer
     {
         public DataTable GetFeatureByProductDAL(FeatureByProductDTO featureByProductDTO)
         {
-            SqlDataAdapter da = new SqlDataAdapter();
+            SqlDataAdapter da = new SqlDataAdapter("proc_GetDataSticker", Connect());
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
-            da.SelectCommand.CommandText = "proc_GetDataSticker";
-            da.SelectCommand.Parameters.AddWithValue("@ProductId", featureByProductDTO);
-            da.SelectCommand.Connection = Connect();
-            da.SelectCommand.Connection.Open();
+            da.SelectCommand.Parameters.AddWithValue("@ProductId", featureByProductDTO.ProductId);
+            Connect().Open();
             DataTable dt = new DataTable();
             da.Fill(dt);
-            da.SelectCommand.Connection.Close();
+            Connect().Close();
             return dt;
         }
         public bool AddFeatureByProductDAL(FeatureByProductDTO featureByProductDTO)
@@ -45,6 +43,7 @@ namespace DataAccessLayer
             cmd.CommandText = "proc_UpdateSticker";
             cmd.Connection = Connect();
             cmd.Parameters.AddWithValue("@ProductId", featureByProductDTO.ProductId);
+            cmd.Parameters.AddWithValue("@FeatureIdChange", featureByProductDTO.FeatureIdChange);
             cmd.Parameters.AddWithValue("@FeatureId", featureByProductDTO.FeatureId);
             cmd.Parameters.AddWithValue("@FeatureValue", featureByProductDTO.FeatureValue);
             cmd.Connection.Open();
@@ -58,6 +57,7 @@ namespace DataAccessLayer
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "proc_DeleteSticker";
             cmd.Connection= Connect();
+            cmd.Parameters.AddWithValue("@ProductId", featureByProductDTO.ProductId);
             cmd.Parameters.AddWithValue("@FeatureId", featureByProductDTO.FeatureId);
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();

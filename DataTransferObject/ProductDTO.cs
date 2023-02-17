@@ -35,6 +35,11 @@ namespace DataTransferObject
         public string ImportPrice { get => _ImportPrice; set => _ImportPrice = value; }
         public string ExportPrice { get => _ExportPrice; set => _ExportPrice = value; }
         public string ProductDescription { get => _ProductDescription; set => _ProductDescription=value; }
+        //Difference properties
         public string SearchDataPayment { get; set; }
+        public string SearchDataProduct { get; set; }
+        public int TotalRecords { get; set; }
+        public int PageSize { get; set; }
+        public int PageIndex { get; set; }
     }
 }

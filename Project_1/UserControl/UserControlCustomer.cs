@@ -43,7 +43,7 @@ namespace Project_1
             if (txtSearchFollowCustomerName.Text == "")
             {
                 txtSearchFollowCustomerName.Text = "Tìm kiếm theo tên";
-                txtSearchFollowCustomerName.ForeColor = Color.LightGray;
+                txtSearchFollowCustomerName.ForeColor = Color.Gray;
             }
         }
         private void txtCustomerId_Enter(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Project_1
             if (txtCustomerId.Text == "")
             {
                 txtCustomerId.Text = "Thêm mới không cần nhập";
-                txtCustomerId.ForeColor = Color.LightGray;
+                txtCustomerId.ForeColor = Color.Gray;
             }
         }
         private void ShowDataCustomer()
