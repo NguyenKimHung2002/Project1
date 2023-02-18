@@ -1,97 +1,60 @@
-# QWERTY
+# Chương trình quản lý và thu thập dữ liệu khách hàng
+*Nguyễn Kim Hùng, MSSV: 20200260*
 
-[Readme Tiếng Việt](doc\Readme_Vietnamese.md)
 
-## Table of Contents
-<!-- TOC -->
-* [1. Requirement](#requirement)
-* [2. SQL Server Configuration](#sql-server-configuration)
-* [3. Run Program](#run-program)
-* [4. Contributors](#contributors)
-* [5. Support user and tester](#support-user-and-tester)
-<!-- TOC -->
-# Requirement
-[SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) version 2022 or later, 
-choose the version that suits your operating system and computer configuration.
+# 1. Yêu cầu
+[SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) phiên bản 2022 hoặc mới hơn,
+chọn phiên bản phù hợp với hệ điều hành và cấu hình máy tính của bạn.
 
-[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16) version 19 or later.
+[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16) phiên bản 2019 hoặc mới hơn.
 
-### Preffered IDE for running/testing: [Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows) version 2022.3.1 or later.
+### IDE khuyến nghị để chạy chương trình: [Visual Studio IDEA](https://visualstudio.microsoft.com/fr/downloads/) phiên bản 2022 hoặc mới hơn.
 
-*If the current version is lower than required version, please update to the latest version.*
+*Nếu phiên bản hiện tại thấp hơn phiên bản yêu cầu, vui lòng cập nhật lên phiên bản mới nhất.*
 
-# SQL Server Configuration
+# 2. Cấu hình SQL Server 
 
-## Enable SQL Server Authentication Account
+Kích hoạt tài khoản xác thực SQL Server
 
-Make sure to restart the SQL Server service after configuration.
+Đảm bảo rẳng khởi động lại dịch vụ SQL Server sau khi cấu hình.
 
-### Change the Authentication Mode:
+### 2.1. Thay đổi Authentication mode:
 
-Follow the steps mentioned below to use SQL Server Authentication.
+Thực hiện theo từng bước dưới đây để sử dụng SQL Server Authentication.
 
-1. Login to the SQL Server instance using SQL Server Management Studio (SSMS). If not configured before, on the Connect to SQL Server page, 
-please select `Windows Authentication` mode, click on `OK`.
-2. Right-click your `SQL Server name`, click on `Properties`.
-3. On the `Server Properties` page, click on `Security`. Enable `SQL Server and Windows Authentication` mode.
-4. Under "Server Proxy Account", click on `Enable Proxy Account`, enter "Proxy Account" as `sa` and create a `password`, then click `OK`.
+1. Đăng nhập vào SQL Server sử dụng SQL Server Management Studio (SSMS). Nếu chưa từng cấu hình trước đó, 
+vui lòng kích hoạt `Windows Authentication` in the "Authentication", click chọn `OK`.
+2. Chuột phải vào `Tên SQL Server` của bạn, mở `Properties`.
+3. Trên trang `Server Properties`, click chọn `Security`. Kích hoạt `SQL Server and Windows Authentication` in the "Authentication".
+4. Dưới "Server Proxy Account", click chọn `Enable Proxy Account`, tại "Proxy Account" ghi `sa` và tạo một `mật khẩu` bảo mật, sau đó click `OK`.
 
-### Enable the SQL Server Authentication Login:
+### 2.2 Kích hoạt tài khoản SQL Server Authentication:
 
-1. Connect to the SQL Server instance using SQL Server Management Studio (SSMS) and expand `Security` > `Logins` Directory.
-2. Right-click on the `sa` account, select `Properties`.
-3. Head to the Status page. Enable Login settings for the account. Click on `OK`.
-4. `Restart` and `login` to SQL Server Instance in SSMS using `SQL Server Authentication` mode with created account. If failed, try restarting the computer.
+1. Kết nối tới giao diện SQL Server bằng cách sử dụng SQL Server Management Studio (SSMS) và chọn `Security` > mở thư mục `Logins`.
+2. Click phải chuột vào tài khoản `sa`, mở `Properties`.
+3. Ở đầu trang `Status`, bật cài đặt "Login" cho "Account". Click chọn `OK`.
+4. `Restart` và `login` tới giao diện SQL Server trong SSMS sử dụng chế độ `SQL Server Authentication` với tài khoản được tạo. Nếu xảy ra lỗi, thử `restart` lại máy.
 
-### Enable TCP/IP Protocol
-1. Open SQL Server Configuration Management: `Windows` > *search* configuration > select `SQL Server Configuration Management`, 
-if you can't find it, go to `Windows` > `Run` > add link `C:\Windows\SysWOW64\SQLServerManager16.msc`, references from [SQL Server Configuration Management](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-configuration-manager?view=sql-server-ver16).
-2. Select `SQL Server Network Configuration` tab, select `the protocol of the SQL Server` instance currently using (normally the service with Running State).
-3. Right-click `TCP/IP protocol`, open `Properties`, change the Enabled settings to `Yes`.
-4. Go to `ID Addresses` tab, in the "IPAll" settings (it's at the bottom), type `1433` in TCP Port. click on `OK`.
+### 2.3 Kích hoạt giao thức TCP/IP
+1. Mở SQL Server Configuration Management: `Windows` > *tìm kiếm* configuration > chọn `SQL Server Configuration Management`.
+   Nếu bạn không tìm thấy, đi tới `Windows` > `Run` > Thêm đường dẫn `C:\Windows\SysWOW64\SQLServerManager16.msc` và nhấn `OK`, có thể tham khảo thêm từ [SQL Server Configuration Management](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-configuration-manager?view=sql-server-ver16).
+2. Chọn `SQL Server Network Configuration` tab, chọn `the protocol of the SQL Server` giao diện hiện tại đang sử dung (thông thường dịch vụ ở trạng thái Running State).
+3. Click phải chuột vào `TCP/IP protocol`, mở `Properties`, thay đổi kích hoạt cài đặt thành `Yes`.
+4. Đi tới `ID Addresses` tab, trong cài đặt "IPAll" (ở cuối trang), chỉnh kiểu `1433` trong TCP Port. click chọn `OK`.
 
-# Run Program
+# 3. Chạy chương trình
 
-### 1. Create Database
+### 3.1. Tạo cơ sở dữ liệu
 
-`Open` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _create a database_
+`Mở` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _thực thi [file]_
 
-Example:
+Ví dụ:
 ```
 create database Project_SE
 go
 ```
-after that, `Execute` code.
+sau đó, `Execute` code.
+ 
+hoặc bạn có thể tạo cơ sở dữ liệu bằng _Công cụ hỗ trợ_.
 
-Or you can create database by _Tool Support_.
-
-### 2. Edit Path to Database
-
-Go to [Path to Database](src\main\java\components\database\DatabaseConnection.java).
-At the createConnection() method edit information about the server name, password and database name to match the configuration information.
-
-Example:
-```shell
-    public static void createConnection(){
-        createConnection("LAPTOP-UAFG5AK0\\KIMHUNG","sa","kimhung29042002","Project_SE");
-    }
-```
-
-### 3. Create Your Account
-
-1. The First way: Use the registration function
-2. The Second way: `Refresh` Database > Right-click `dbo.account_table` > `Edit Top 200 Rows` > _Add a record to use_ > _Login with your account_.
-
-# Contributors
-
-1. [Nguyễn Kim Hùng](https://github.com/NguyenKimHung2002)
-2. [Phạm Duy Hưng](https://github.com/lightningdhna)
-3. [Lê Thành Nguyên](https://github.com/love123bg)
-4. [Trần Anh Quốc](https://github.com/quoctata2911)
-
-# Support user and tester
-
-You can view the software manual [here](doc\softwareManuals.md).
-
-1. If you are a user, you will be supported when you go to [Feedback support](doc\feedback.md)
-2. If you are a tester, you will be supported when you go to [Testcases](doc\testcase.md) and [Test Report](doc\testReport.md)
+### 3.2. Chỉnh sửa đường dẫn tới Database
