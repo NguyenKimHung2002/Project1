@@ -609,6 +609,7 @@
             this.dgvSuggestions.RowTemplate.Height = 24;
             this.dgvSuggestions.Size = new System.Drawing.Size(546, 112);
             this.dgvSuggestions.TabIndex = 104;
+            this.dgvSuggestions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuggestions_CellClick);
             // 
             // UserControlPayment
             // 

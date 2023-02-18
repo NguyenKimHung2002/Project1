@@ -163,5 +163,15 @@ namespace DataAccessLayer
             Connect().Close();
             return dt;
         }
+        public DataTable RecommendTrendingProductsDAL()
+        {
+            DataTable dt = new DataTable();
+            Connect().Open();
+            SqlDataAdapter da = new SqlDataAdapter("proc_RecommendTrendingProducts", Connect());
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            da.Fill(dt);
+            Connect().Close();
+            return dt;
+        }
     }
 }

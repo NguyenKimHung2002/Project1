@@ -54,17 +54,8 @@ namespace Project_1
             txtProductQuantity.Text = "";
             txtProductUnit.Text = "";
             txtProductDescription.Text = "";
-            txtSearchProduct.Text = "Tìm kiếm sản phẩm";
+            txtSearchProduct.Text = "Tìm kiếm (theo ID, tên sản phẩm)";
             txtSearchProduct.ForeColor = Color.Gray;
-            DataTable dt = featureBLL.GetFeatureNameBLL();
-            DataRow dr = dt.NewRow();
-            dr["Mã đặc tính"] = "-1";
-            dr["Đặc tính"] = "Tất cả";
-            dt.Rows.Add(dr);
-            cbFeatureName.DataSource = dt;
-            cbFeatureName.DisplayMember = "Đặc tính nổi bật";
-            cbFeatureName.ValueMember = "Đặc tính";
-            cbFeatureName.SelectedIndex = cbFeatureName.Items.Count - 1;
             txtFeatureValue.Text = "";
         }
         private void txtProductId_Enter(object sender, EventArgs e)
@@ -87,7 +78,7 @@ namespace Project_1
 
         private void txtSearchProduct_Enter(object sender, EventArgs e)
         {
-            if(txtSearchProduct.Text == "Tìm kiếm sản phẩm")
+            if(txtSearchProduct.Text == "Tìm kiếm (theo ID, tên sản phẩm)")
             {
                 txtSearchProduct.Text = "";
                 txtSearchProduct.ForeColor = Color.Black;
@@ -98,7 +89,7 @@ namespace Project_1
         {
             if(txtSearchProduct.Text == "")
             {
-                txtSearchProduct.Text = "Tìm kiếm sản phẩm";
+                txtSearchProduct.Text = "Tìm kiếm (theo ID, tên sản phẩm)";
                 txtSearchProduct.ForeColor = Color.Gray;
             }
         }

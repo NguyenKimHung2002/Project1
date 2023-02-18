@@ -62,6 +62,10 @@ namespace Project_1
                     dgvShowDataPayment.DataSource = productBLL.GetDataPaymentBLL(productDTO);
                 }
             }
+            dgvShowDataPayment.Columns[0].Width = 60;
+            dgvShowDataPayment.Columns[3].Width = 80;
+            dgvShowDataPayment.Columns[4].Width = 84;
+            dgvShowDataPayment.Columns[5].Width = 80;
         }
         private void btnPre_Click(object sender, EventArgs e)
         {
@@ -178,7 +182,6 @@ namespace Project_1
             {
                 row = dgvShowDataPayment.Rows[e.RowIndex];
                 txtProductNumber.Text = "1";
-                //cbFeatureName.Text = Convert.ToString(row.Cells["FeatureName"].Value);
                 lblProductId.Text = Convert.ToString(row.Cells["Mã sản phẩm"].Value);
             }
         }
@@ -192,9 +195,15 @@ namespace Project_1
             txtSearchDataPayment.Text = "Tìm kiếm (theo ID, tên SP)";
             txtProductNumber.Text = "Số lượng";
             txtMonneyCustommerPay.Text = "Nhập và nhấn Enter";
-            productDTO.ProductId = "";
-            var dt = productBLL.GetSuggestionsBLL(productDTO);
+
+            var dt = productBLL.RecommendTrendingProductsBLL();
             dgvSuggestions.DataSource = dt;
+            dgvSuggestions.Columns[0].Width = 60;
+            dgvSuggestions.Columns[3].Width = 80;
+            dgvSuggestions.Columns[4].Width = 84;
+            dgvSuggestions.Columns[5].Width = 80;
+            dgvSuggestions.Columns[6].Width = 120;
+
             txtSearchDataPayment.ForeColor = Color.Gray;
             btnPayment.BackColor = Color.Gray;
             btnCancel.BackColor = Color.Gray;
@@ -406,6 +415,10 @@ namespace Project_1
                 productDTO.ProductId = row.Cells[0].Value.ToString();
                 var dt = productBLL.GetSuggestionsBLL(productDTO);
                 dgvSuggestions.DataSource = dt;
+                dgvSuggestions.Columns[0].Width = 60;
+                dgvSuggestions.Columns[3].Width = 80;
+                dgvSuggestions.Columns[4].Width = 84;
+                dgvSuggestions.Columns[5].Width = 80;
             }
             LoadSumInvoice();
         }
@@ -432,6 +445,17 @@ namespace Project_1
                 totalRecords = productBLL.GetTotalDataProductBLL();
                 totalPages = totalRecords / pageSize + 1;
                 ShowDataPayment();
+            }
+        }
+
+        private void dgvSuggestions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            if (e.RowIndex != -1)
+            {
+                row = dgvSuggestions.Rows[e.RowIndex];
+                txtProductNumber.Text = "1";
+                lblProductId.Text = Convert.ToString(row.Cells["Mã sản phẩm"].Value);
             }
         }
     }

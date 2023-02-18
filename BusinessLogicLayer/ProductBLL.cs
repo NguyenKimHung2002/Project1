@@ -60,5 +60,9 @@ namespace BusinessLogicLayer
         {
             return productDAL.GetSuggestionsDAL(producDTO);
         }
+        public DataTable RecommendTrendingProductsBLL()
+        {
+            return productDAL.RecommendTrendingProductsDAL();
+        }
     }
 }
