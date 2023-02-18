@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Project1_DB.sql" />
     <Content Include="ReSources\BackgroundStore.jpg" />
     <Content Include="ReSources\check.png" />
     <Content Include="ReSources\close.png" />

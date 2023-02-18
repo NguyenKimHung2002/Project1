@@ -46,15 +46,22 @@ vui lòng kích hoạt `Windows Authentication` in the "Authentication", click c
 
 ### 3.1. Tạo cơ sở dữ liệu
 
-`Mở` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _thực thi [file]_
-
-Ví dụ:
-```
-create database Project_SE
-go
-```
-sau đó, `Execute` code.
- 
-hoặc bạn có thể tạo cơ sở dữ liệu bằng _Công cụ hỗ trợ_.
+`Mở` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _thực thi file [Project1_DB.sql](/Project1_DB.sql)_
 
 ### 3.2. Chỉnh sửa đường dẫn tới Database
+
+Đi tới [file config](App.config) chỉnh sửa theo tên server của bạn
+
+Ví dụ:
+
+```
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+	<connectionStrings>
+		<add name="conn" connectionString="server=LAPTOP-UAFG5AK0\KIMHUNG; database=Project1_DB; user id=sa; password=kimhung29042002"/>
+	</connectionStrings>
+</configuration>
+```
