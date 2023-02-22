@@ -16,6 +16,10 @@ namespace BusinessLogicLayer
         {
             return customerDAL.GetDataCustomerDAL();
         }
+        public int CheckExistsCustomerIdBLL(CustomerDTO customerDTO)
+        {
+            return customerDAL.CheckExistsCustomerIdDAL(customerDTO);
+        }
         public bool AddCustomerBLL(CustomerDTO customerDTO)
         {
             return customerDAL.AddCustomerDAL(customerDTO);

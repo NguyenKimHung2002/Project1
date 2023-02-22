@@ -214,39 +214,51 @@ namespace Project_1
             ProductDTO productDTO = new ProductDTO();
             productDTO.ProductId = lblProductId.Text;
             DataTable dt = productBLL.AddInvoiceDetailBLL(productDTO);
-            try
+            if (!Int32.TryParse(txtProductNumber.Text, out int id))
             {
-                if (txtProductNumber.Text != "Số lượng")
-                {
-                    int intoMoney = Convert.ToInt32(dt.Rows[0].ItemArray[1]) * Convert.ToInt32(txtProductNumber.Text);
-                    DataGridViewRow r = checkExistInvoice(productDTO.ProductId);
-                    if (r != null)
-                    {
-                        var unitPrice = Convert.ToInt32(r.Cells[2].Value);
-                        var number = Convert.ToInt32(r.Cells[4].Value);
-                        number = number + Convert.ToInt32(txtProductNumber.Text);
-                        r.Cells[4].Value = number;
-                        r.Cells[5].Value = number * unitPrice;
-                        dgvInvoiceDetail.Refresh();
-                    }
-                    else dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), " + ", " - ", " x ");
-                }
-                else 
-                {
-                    dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], " + ", " - ", " x ");
-                }        
-                LoadSumInvoice();
-                if (dgvInvoiceDetail.Rows.Count >= 2)
-                {
-                    dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count-2].Selected = false;
-                    dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count-1].Selected = true;
-                }
+                MessageBox.Show("Số lượng sản phẩm phải là một số nguyên dương! Vui lòng kiểm tra lại số lượng sản phẩm", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtProductNumber.Focus();
             }
-            catch (Exception ex)
+            else if (Int32.TryParse(txtProductNumber.Text, out int productNumber) && productNumber <= 0)
             {
-                MessageBox.Show(ex.Message);
-                //MessageBox.Show("Vui lòng chọn sản phẩm muốn thêm vào hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }            
+                MessageBox.Show("Số lượng sản phẩm phải là một số nguyên dương! Vui lòng kiểm tra lại số lượng sản phẩm", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtProductNumber.Focus();
+            }
+            else
+            {
+                try
+                {
+                    if (txtProductNumber.Text != "Số lượng")
+                    {
+                        int intoMoney = Convert.ToInt32(dt.Rows[0].ItemArray[1]) * Convert.ToInt32(txtProductNumber.Text);
+                        DataGridViewRow r = checkExistInvoice(productDTO.ProductId);
+                        if (r != null)
+                        {
+                            var unitPrice = Convert.ToInt32(r.Cells[2].Value);
+                            var number = Convert.ToInt32(r.Cells[4].Value);
+                            number = number + Convert.ToInt32(txtProductNumber.Text);
+                            r.Cells[4].Value = number;
+                            r.Cells[5].Value = number * unitPrice;
+                            dgvInvoiceDetail.Refresh();
+                        }
+                        else dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", txtProductNumber.Text, intoMoney.ToString(), " + ", " - ", " x ");
+                    }
+                    else
+                    {
+                        dgvInvoiceDetail.Rows.Insert(dgvInvoiceDetail.Rows.Count, productDTO.ProductId, dt.Rows[0].ItemArray[0], dt.Rows[0].ItemArray[1], "", "1", dt.Rows[0].ItemArray[1], " + ", " - ", " x ");
+                    }
+                    LoadSumInvoice();
+                    if (dgvInvoiceDetail.Rows.Count >= 2)
+                    {
+                        dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count - 2].Selected = false;
+                        dgvInvoiceDetail.Rows[dgvInvoiceDetail.Rows.Count - 1].Selected = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }      
         }
         private DataGridViewRow checkExistInvoice(string productID)
         {

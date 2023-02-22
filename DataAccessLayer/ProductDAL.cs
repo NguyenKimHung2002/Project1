@@ -173,5 +173,17 @@ namespace DataAccessLayer
             Connect().Close();
             return dt;
         }
+        public int CheckExistProductIdDAL(ProductDTO productDTO)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "proc_CheckExistsProductId";
+            cmd.Parameters.AddWithValue("@ProductId", productDTO.ProductId);
+            cmd.Connection = Connect();
+            cmd.Connection.Open();
+            object code = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return Convert.ToInt32(code);
+        }
     }
 }

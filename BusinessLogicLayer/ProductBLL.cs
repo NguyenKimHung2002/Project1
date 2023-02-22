@@ -64,5 +64,9 @@ namespace BusinessLogicLayer
         {
             return productDAL.RecommendTrendingProductsDAL();
         }
+        public int CheckExistProductIdBLL(ProductDTO producDTO)
+        {
+            return productDAL.CheckExistProductIdDAL(producDTO);
+        }
     }
 }

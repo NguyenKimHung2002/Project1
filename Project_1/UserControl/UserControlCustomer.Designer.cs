@@ -66,7 +66,7 @@
             // 
             this.btnCreateNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateNewCustomer.Image")));
             this.btnCreateNewCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateNewCustomer.Location = new System.Drawing.Point(48, 308);
+            this.btnCreateNewCustomer.Location = new System.Drawing.Point(43, 257);
             this.btnCreateNewCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateNewCustomer.Name = "btnCreateNewCustomer";
             this.btnCreateNewCustomer.Size = new System.Drawing.Size(127, 43);
@@ -80,7 +80,7 @@
             // 
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(211, 308);
+            this.btnUpdate.Location = new System.Drawing.Point(206, 257);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(128, 43);
@@ -94,7 +94,7 @@
             // 
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(373, 308);
+            this.btnDelete.Location = new System.Drawing.Point(368, 257);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(101, 43);

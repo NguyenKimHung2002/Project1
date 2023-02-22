@@ -16,6 +16,7 @@ namespace Project_1
     {
         FeatureBLL featureBLL = new FeatureBLL();
         FeatureDTO featureDTO = new FeatureDTO();
+        FeatureDTO f1 = new FeatureDTO();
         public UserControlFeature()
         {
             InitializeComponent();
@@ -72,77 +73,133 @@ namespace Project_1
         public void Reset()
         {
             txtFeatureId.Text = "Thêm mới không cần nhập";
+            txtFeatureId.ForeColor = Color.Gray;
             txtFeatureName.Text = "";
             txtFeatureDescription.Text = "";
         }       
 
         private void btnCreateNewFeature_Click(object sender, EventArgs e)
         {
-            featureDTO.FeatureName = txtFeatureName.Text;
-            featureDTO.FeatureDescription = txtFeatureDescription.Text;
-            if (featureDTO.FeatureName != "" && featureDTO.FeatureDescription != "")
+            if (CheckInformationFeature())
             {
-                if (featureBLL.AddFeatureBLL(featureDTO) == true)
+                featureDTO.FeatureName = txtFeatureName.Text;
+                featureDTO.FeatureDescription = txtFeatureDescription.Text;
+                if (featureBLL.CheckExistsFeatureId(featureDTO) == 1)
                 {
-                    MessageBox.Show("Thêm thành công.");
-                    ShowDataFeature();
-                    Reset();
+                    MessageBox.Show("Mã đặc tính đã tồn tại! Vui lòng chọn một mã đặc tính khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtFeatureId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Thêm không thành công.");
+                    try
+                    {
+                        if (featureBLL.AddFeatureBLL(featureDTO) == true)
+                        {
+                            MessageBox.Show("Thêm thành công.");
+                            ShowDataFeature();
+                            Reset();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm không thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
             }
         }
 
         private void btnUpdateFeature_Click(object sender, EventArgs e)
         {
-            featureDTO.FeatureName = txtFeatureName.Text;
-            featureDTO.FeatureDescription = txtFeatureDescription.Text;
-            featureDTO.FeatureId = Int32.Parse(txtFeatureId.Text);
-            if (txtFeatureName.Text != "" && txtFeatureDescription.Text != "" && txtFeatureId.Text != "")
+            if (CheckInformationFeature())
             {
-                if (featureBLL.UpdateFeatureBLL(featureDTO))
+                featureDTO.FeatureName = txtFeatureName.Text;
+                featureDTO.FeatureDescription = txtFeatureDescription.Text;
+                featureDTO.FeatureId = Int32.Parse(txtFeatureId.Text);
+                if (featureDTO.FeatureId == f1.FeatureId && featureDTO.FeatureName == f1.FeatureName && featureDTO.FeatureDescription == f1.FeatureDescription)
                 {
-                    MessageBox.Show("Cập nhật thành công.");
-                    ShowDataFeature();
-                    Reset();
+                    MessageBox.Show("Thông tin của bạn chưa được thay đổi bất cứ điều gì! Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtFeatureId.Focus();
+                }
+                else if (featureBLL.CheckExistsFeatureId(featureDTO) == 0)
+                {
+                    MessageBox.Show("Không tìm thấy đặc tính! Vui lòng kiểm tra lại mã đặc tính.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtFeatureId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Thêm không thành công.");
+                    try
+                    {
+                        if (featureBLL.UpdateFeatureBLL(featureDTO))
+                        {
+                            MessageBox.Show("Cập nhật thành công.");
+                            ShowDataFeature();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật không thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
             }
         }
 
         private void btnDeleteFeature_Click(object sender, EventArgs e)
         {
-            featureDTO.FeatureId = Int32.Parse(txtFeatureId.Text);
-            if (txtFeatureId.Text != "" && txtFeatureName.Text != "" && txtFeatureDescription.Text != "")
+            if (CheckInformationFeature())
             {
-                if (featureBLL.DeleteFeatureBLL(featureDTO))
+                featureDTO.FeatureId = Int32.Parse(txtFeatureId.Text);
+                if (featureBLL.CheckExistsFeatureId(featureDTO) == 0)
                 {
-                    MessageBox.Show("Xóa thành công.");
-                    ShowDataFeature();
-                    Reset();
+                    MessageBox.Show("Không tìm thấy đặc tính! Vui lòng kiểm tra lại mã đặc tính.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtFeatureId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa không thành công");
+                    try
+                    {
+                        if (featureBLL.DeleteFeatureBLL(featureDTO))
+                        {
+                            MessageBox.Show("Xóa thành công.");
+                            ShowDataFeature();
+                            Reset();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa không thành công");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
-            else
+        }
+        private bool CheckInformationFeature()
+        {
+            //FeatureId
+            if (!Int32.TryParse(txtFeatureId.Text, out int featureId))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ.");
+                MessageBox.Show("Mã đặc tính phải là một số, do hệ thống tự động cấp! Vui lòng nhập đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFeatureId.Focus();
+                return false;
             }
+            //FeatureName
+            if (txtFeatureName.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên đặc tính", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                txtFeatureName.Focus();
+                return false;
+            }
+            return true;
         }
         private void txtSearchFollowFeatureName_TextChanged(object sender, EventArgs e)
         {
@@ -166,6 +223,9 @@ namespace Project_1
                 txtFeatureId.Text = Convert.ToString(row.Cells["Mã đặc tính"].Value);
                 txtFeatureName.Text = Convert.ToString(row.Cells["Tên đặc tính"].Value);
                 txtFeatureDescription.Text = Convert.ToString(row.Cells["Mô tả"].Value);
+                f1.FeatureId = Convert.ToInt32(txtFeatureId.Text);
+                f1.FeatureName = txtFeatureName.Text;
+                f1.FeatureDescription = txtFeatureDescription.Text;
             }
         }
 

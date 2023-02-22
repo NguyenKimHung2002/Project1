@@ -22,6 +22,19 @@ namespace DataAccessLayer
             Connect().Close();
             return dt;
         }
+        public int CheckExistsFeatureByProductDAL(FeatureByProductDTO featureByProductDTO, FeatureDTO featureDTO)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "proc_CheckExistsFeatureByProduct";
+            cmd.Parameters.AddWithValue("@ProductId", featureByProductDTO.ProductId);
+            cmd.Parameters.AddWithValue("@FeatureName", featureDTO.FeatureName);
+            cmd.Connection = Connect();
+            cmd.Connection.Open();
+            object o = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return (int)o;
+        }
         public bool AddFeatureByProductDAL(FeatureByProductDTO featureByProductDTO)
         {
             SqlCommand cmd = new SqlCommand();
@@ -43,7 +56,6 @@ namespace DataAccessLayer
             cmd.CommandText = "proc_UpdateSticker";
             cmd.Connection = Connect();
             cmd.Parameters.AddWithValue("@ProductId", featureByProductDTO.ProductId);
-            cmd.Parameters.AddWithValue("@FeatureIdChange", featureByProductDTO.FeatureIdChange);
             cmd.Parameters.AddWithValue("@FeatureId", featureByProductDTO.FeatureId);
             cmd.Parameters.AddWithValue("@FeatureValue", featureByProductDTO.FeatureValue);
             cmd.Connection.Open();

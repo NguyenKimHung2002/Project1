@@ -17,6 +17,7 @@ namespace Project_1
     {
         CustomerBLL customerBLL = new CustomerBLL();
         CustomerDTO customerDTO = new CustomerDTO();
+        CustomerDTO c1 = new CustomerDTO();
 
         public UserControlCustomer()
         {
@@ -72,96 +73,166 @@ namespace Project_1
         private void Reset()
         {
             txtCustomerId.Text = "Thêm mới không cần nhập";
+            txtCustomerId.ForeColor = Color.Gray;
             txtCustomerName.Text = "";
             txtCustomerPhone.Text = "";
         }
         private void btnCreateNewCustomer_Click(object sender, EventArgs e)
         {
-            customerDTO.CustomerName = txtCustomerName.Text;
-            customerDTO.CustomerPhone = txtCustomerPhone.Text;
-            try
+            if (CheckInformationCustomer())
             {
-                if (customerDTO.CustomerName != "" && customerDTO.CustomerPhone != "")
+                customerDTO.CustomerName = txtCustomerName.Text;
+                customerDTO.CustomerPhone = txtCustomerPhone.Text;
+                if (customerBLL.CheckExistsCustomerIdBLL(customerDTO) == 1)
                 {
-                    if (customerBLL.AddCustomerBLL(customerDTO) == true)
-                    {
-                        MessageBox.Show("Thêm thành công.");
-                        ShowDataCustomer();
-                        Reset();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm không thành công.");
-                    }
+                    MessageBox.Show("Mã khách hàng đã tồn tại! Vui lòng chọn một mã khách hàng khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCustomerId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ.");
+                    try
+                    {
+                        if (customerBLL.AddCustomerBLL(customerDTO) == true)
+                        {
+                            MessageBox.Show("Thêm thành công.");
+                            ShowDataCustomer();
+                            Reset();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm không thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
+            
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            customerDTO.CustomerName = txtCustomerName.Text;
-            customerDTO.CustomerPhone = txtCustomerPhone.Text;
-            customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
-            try
+            if (CheckInformationCustomer())
             {
-                if (txtCustomerName.Text != "" && txtCustomerPhone.Text != "" && txtCustomerId.Text != "")
+                customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
+                customerDTO.CustomerName = txtCustomerName.Text;
+                customerDTO.CustomerPhone = txtCustomerPhone.Text;
+                if (customerDTO.CustomerId == c1.CustomerId && customerDTO.CustomerName == c1.CustomerName && customerDTO.CustomerPhone == c1.CustomerPhone)
                 {
-                    if (customerBLL.UpdateCustomerBLL(customerDTO))
-                    {
-                        MessageBox.Show("Cập nhật thành công.");
-                        ShowDataCustomer();
-                        Reset();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm không thành công.");
-                    }
+                    MessageBox.Show("Thông tin của bạn chưa được thay đổi bất cứ điều gì! Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCustomerId.Focus();
+                }
+                else if (customerBLL.CheckExistsCustomerIdBLL(customerDTO) == 0)
+                {
+                    MessageBox.Show("Không tìm thấy khách hàng! Vui lòng kiểm tra lại mã khách hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCustomerId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ.");
+                    try
+                    {
+                        if (customerBLL.UpdateCustomerBLL(customerDTO))
+                        {
+                            MessageBox.Show("Cập nhật thành công.");
+                            ShowDataCustomer();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật không thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
         {
-            customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
-            try
+            if (CheckInformationCustomer())
             {
-                if (txtCustomerId.Text != "" && txtCustomerName.Text != "" && txtCustomerPhone.Text != "")
+                customerDTO.CustomerId = Int32.Parse(txtCustomerId.Text);
+                if (customerBLL.CheckExistsCustomerIdBLL(customerDTO) == 0)
                 {
-                    if (customerBLL.DeleteCustomerBLL(customerDTO))
-                    {
-                        MessageBox.Show("Xóa thành công.");
-                        ShowDataCustomer();
-                        Reset();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa không thành công");
-                    }
+                    MessageBox.Show("Không tìm thấy khách hàng! Vui lòng kiểm tra lại mã khách hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCustomerId.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ.");
+                    try
+                    {
+                        if (customerBLL.DeleteCustomerBLL(customerDTO))
+                        {
+                            MessageBox.Show("Xóa thành công.");
+                            ShowDataCustomer();
+                            Reset();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa không thành công");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
+        private bool CheckInformationCustomer()
+        {
+            //CustomerId
+            if(!Int32.TryParse(txtCustomerId.Text, out int customerId))
+            {
+                MessageBox.Show("Mã khách hàng phải là một số, do hệ thống tự động cấp! Vui lòng nhập đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCustomerId.Focus();
+                return false;
+            }
+            //CustomerName
+            if (txtCustomerName.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                txtCustomerName.Focus();
+                return false;
+            }
+            //CustomerPhone
+            if (txtCustomerPhone.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCustomerPhone.Focus();
+                return false;
+            }
+            else if (!IsValidPhoneNumber(txtCustomerPhone.Text))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ! Số điện thoại phải có độ dài là 10 và tất cả các kí tự đều là số.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCustomerPhone.Focus();
+                return false;
+            }
+            return true;
+        }
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            // Kiểm tra độ dài của số điện thoại
+            if (phoneNumber.Length != 10)
+            {
+                return false;
+            }
+
+            // Kiểm tra tất cả các ký tự đều là số
+            foreach (char c in phoneNumber)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+
+            // Nếu vượt qua tất cả các kiểm tra trên, số điện thoại là hợp lệ
+            return true;
+        }
+
         private void txtSearchFollowCustomerName_TextChanged(object sender, EventArgs e)
         {
             if (txtSearchFollowCustomerName.Text != "" && txtSearchFollowCustomerName.Text != "Tìm kiếm theo tên")
@@ -185,6 +256,9 @@ namespace Project_1
                 txtCustomerId.Text = Convert.ToString(row.Cells["Mã khách hàng"].Value);
                 txtCustomerName.Text = Convert.ToString(row.Cells["Tên khách hàng"].Value);
                 txtCustomerPhone.Text = Convert.ToString(row.Cells["SĐT khách hàng"].Value);
+                c1.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+                c1.CustomerName = txtCustomerName.Text;
+                c1.CustomerPhone = txtCustomerPhone.Text;
             }
         }
     }   

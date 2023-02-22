@@ -24,6 +24,10 @@ namespace BusinessLogicLayer
         {
             return featureDAL.GetFeatureIdByFeatureNameDAL(featureDTO);
         }
+        public int CheckExistsFeatureId(FeatureDTO featureDTO)
+        {
+            return featureDAL.CheckExistsFeatureIdDAL(featureDTO);
+        }
         public bool AddFeatureBLL(FeatureDTO featureDTO)
         {
             return featureDAL.AddFeatureDAL(featureDTO);

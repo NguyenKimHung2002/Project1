@@ -16,6 +16,10 @@ namespace BusinessLogicLayer
         {
             return featureByProductDAL.GetFeatureByProductDAL(featureByProductDTO);
         }
+        public int CheckExistsFeatureByProductBLL(FeatureByProductDTO featureByProductDTO, FeatureDTO featureDTO)
+        {
+            return featureByProductDAL.CheckExistsFeatureByProductDAL(featureByProductDTO, featureDTO);
+        }
         public bool AddFeatureByProductBLL(FeatureByProductDTO featureByProductDTO)
         {
             return featureByProductDAL.AddFeatureByProductDAL(featureByProductDTO);

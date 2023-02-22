@@ -43,6 +43,18 @@ namespace DataAccessLayer
             cmd.Connection.Close();
             return Convert.ToInt32(res);
         }
+        public int CheckExistsFeatureIdDAL(FeatureDTO featureDTO)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "proc_CheckExistsFeatureId";
+            cmd.Parameters.AddWithValue("@FeatureId", featureDTO.FeatureId);
+            cmd.Connection = Connect();
+            cmd.Connection.Open();
+            object o = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return (int)o;
+        }
         public bool AddFeatureDAL(FeatureDTO featureDTO)
         {
 
