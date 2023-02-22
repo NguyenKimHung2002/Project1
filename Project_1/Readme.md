@@ -47,7 +47,7 @@ vui lòng kích hoạt `Windows Authentication` in the "Authentication", click c
 
 ### 3.1. Tạo cơ sở dữ liệu
 
-`Mở` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _thực thi file [Project1_DB.sql](/Project1_DB.sql)_
+`Mở` SQL Server Management Studio (SSMS) > `Login` > `New Query` > _thực thi file [Project1_DB.sql](Project1_DB.sql)_
 
 ### 3.2. Chỉnh sửa đường dẫn tới Database
 
