@@ -70,6 +70,7 @@
             // 
             // txtFeatureId
             // 
+            this.txtFeatureId.Enabled = false;
             this.txtFeatureId.ForeColor = System.Drawing.Color.Gray;
             this.txtFeatureId.Location = new System.Drawing.Point(132, 26);
             this.txtFeatureId.Margin = new System.Windows.Forms.Padding(4);
@@ -153,11 +154,14 @@
             // 
             // dgvShowDataFeature
             // 
+            this.dgvShowDataFeature.AllowUserToAddRows = false;
+            this.dgvShowDataFeature.AllowUserToDeleteRows = false;
             this.dgvShowDataFeature.BackgroundColor = System.Drawing.Color.White;
             this.dgvShowDataFeature.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowDataFeature.Location = new System.Drawing.Point(440, 81);
             this.dgvShowDataFeature.Margin = new System.Windows.Forms.Padding(4);
             this.dgvShowDataFeature.Name = "dgvShowDataFeature";
+            this.dgvShowDataFeature.ReadOnly = true;
             this.dgvShowDataFeature.RowHeadersWidth = 51;
             this.dgvShowDataFeature.Size = new System.Drawing.Size(620, 401);
             this.dgvShowDataFeature.TabIndex = 85;

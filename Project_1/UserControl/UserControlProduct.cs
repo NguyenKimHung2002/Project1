@@ -201,22 +201,28 @@ namespace Project_1
                 {
                     try
                     {
-                        if (productBLL.DeleteProductBLL(productDTO))
+                        var deleteProduct = MessageBox.Show("Việc xóa sản phẩm này sẽ dẫn đến thông tin sản phẩm này trong tất các hóa đơn sẽ bị xóa bỏ. " +
+                            "Tính toán hóa đơn trong quá khứ sẽ không còn chính xác nữa. Hãy chắc chắn rằng những hóa đơn liên quan đã được sao lưu. " +
+                            "Bạn có chắc chắn muốn xóa sản phẩm này không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (deleteProduct == DialogResult.Yes)
                         {
-                            MessageBox.Show("Xóa thành công.");
-                            txtProductId.Text = "Nhập mã sản phẩm";
-                            txtProductId.ForeColor = Color.Gray;
-                            txtProductName.Text = "";
-                            txtImportPrice.Text = "";
-                            txtExportPrice.Text = "";
-                            txtProductQuantity.Text = "";
-                            txtProductUnit.Text = "";
-                            txtProductDescription.Text = "";
-                            ShowDataProduct();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa không thành công.");
+                            if (productBLL.DeleteProductBLL(productDTO))
+                            {
+                                MessageBox.Show("Xóa thành công.");
+                                txtProductId.Text = "Nhập mã sản phẩm";
+                                txtProductId.ForeColor = Color.Gray;
+                                txtProductName.Text = "";
+                                txtImportPrice.Text = "";
+                                txtExportPrice.Text = "";
+                                txtProductQuantity.Text = "";
+                                txtProductUnit.Text = "";
+                                txtProductDescription.Text = "";
+                                ShowDataProduct();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Xóa không thành công.");
+                            }
                         }
                     }
                     catch (Exception ex)

@@ -462,6 +462,7 @@
             // 
             // txtCustomerName
             // 
+            this.txtCustomerName.Enabled = false;
             this.txtCustomerName.Location = new System.Drawing.Point(160, 105);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";

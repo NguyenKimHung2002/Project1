@@ -34,6 +34,18 @@ namespace DataAccessLayer
             cmd.Connection.Close();
             return (int)o;
         }
+        public int CheckExistsCustomerPhoneDAL(CustomerDTO customerDTO)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "proc_CheckExistsCustomerPhone";
+            cmd.Parameters.AddWithValue("@CustomerPhone", customerDTO.CustomerPhone);
+            cmd.Connection = Connect();
+            cmd.Connection.Open();
+            object o = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return (int)o;
+        }
         public bool AddCustomerDAL(CustomerDTO customerDTO)
         {
             

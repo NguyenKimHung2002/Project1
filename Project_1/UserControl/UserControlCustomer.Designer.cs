@@ -51,11 +51,14 @@
             // 
             // dgvShowDataCustomer
             // 
+            this.dgvShowDataCustomer.AllowUserToAddRows = false;
+            this.dgvShowDataCustomer.AllowUserToDeleteRows = false;
             this.dgvShowDataCustomer.BackgroundColor = System.Drawing.Color.White;
             this.dgvShowDataCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowDataCustomer.Location = new System.Drawing.Point(507, 80);
             this.dgvShowDataCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.dgvShowDataCustomer.Name = "dgvShowDataCustomer";
+            this.dgvShowDataCustomer.ReadOnly = true;
             this.dgvShowDataCustomer.RowHeadersWidth = 51;
             this.dgvShowDataCustomer.Size = new System.Drawing.Size(505, 271);
             this.dgvShowDataCustomer.TabIndex = 11;
@@ -198,6 +201,7 @@
             // 
             // txtCustomerId
             // 
+            this.txtCustomerId.Enabled = false;
             this.txtCustomerId.ForeColor = System.Drawing.Color.Gray;
             this.txtCustomerId.Location = new System.Drawing.Point(168, 26);
             this.txtCustomerId.Margin = new System.Windows.Forms.Padding(4);
